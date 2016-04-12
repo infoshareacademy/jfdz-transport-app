@@ -2,15 +2,7 @@ extends ./layouts/bootstrap.jade
   
 block body
   .container
-    include ./components/nav.html
-    .row
-      .col-md-6 Text for first col
-      .col-md-6 
-        p Text for second col
-          button.btn.btn-danger Destroy
-    .row
-      .col-md-4(style="background: #000;")
-      .col-md-4
-        include ./components/form.jade
-      .col-md-4
-        include ./components/form.jade
+    include ./components/nav2.html
+    include ./components/slide_show_on_page.html
+    include ./components/jumbotron2.html
+    include ./components/landing_page_v2.html

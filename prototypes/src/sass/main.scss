@@ -1,13 +1,20 @@
 @import "vars.sass";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 
-.btn-danger {
-  background: #000;
-  width: 3000px/2;
+
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+  background-image: url('../../../../logo-autobus.png')
 }
 
-
-.navbar-default {
-
-  background-color: #00b3ee;
-}
+.img-circle {
+  height: 250px;
+  width: 250px;
+  margin: 5px auto;
+  border: 5px solid red;
+  background-color:red;
+  border-radius: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;}

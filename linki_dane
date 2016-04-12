@@ -1,0 +1,6 @@
+http://isa-api.herokuapp.com/transport/lines.json
+http://isa-api.herokuapp.com/transport/stops.json
+http://isa-api.herokuapp.com/transport/streetMap.txt
+
+
+wyświetlanie: nr autobusu id [] - name , name.firstchild / last child
