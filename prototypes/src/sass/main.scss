@@ -3,18 +3,19 @@
 
 
 .navbar-brand img {
-  width: 50px;
-  height: 50px;
-  background-image: url('../../../../logo-autobus.png')
+  //width: 50px;
+  //height: 50px;
+  //background-image: url("../jade/components/logo-autobus.png")
 }
 
 .img-circle {
   height: 250px;
   width: 250px;
-  margin: 5px auto;
-  border: 5px solid red;
-  background-color:red;
+  margin: 3px auto;
+  border: 5px solid #a21716;
+  background-color: #a21716;
   border-radius: 50%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;}
+  //background-size: contain;
+  //background-repeat: no-repeat;
+  //background-position: center center;
+}
