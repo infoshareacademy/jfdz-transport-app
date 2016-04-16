@@ -1,13 +1,6 @@
 @import "vars.sass";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 
-
-.navbar-brand img {
-  //width: 50px;
-  //height: 50px;
-  //background-image: url("../jade/components/logo-autobus.png")
-}
-
 .img-circle {
   height: 250px;
   width: 250px;
@@ -15,7 +8,7 @@
   border: 5px solid #a21716;
   background-color: #a21716;
   border-radius: 50%;
-  //background-size: contain;
-  //background-repeat: no-repeat;
-  //background-position: center center;
+}
+.container .marketing {
+  margin-top: 70px;
 }
