@@ -1,6 +1,11 @@
-console.log('Hello');
-console.log('Test');
-var dane = [
+var app = angular.module("app", []);
+
+app.controller('HomeCtrl', function ($scope) {
+    console.log("Home Controller!");
+    $scope.name = 'Agnieszko';
+});
+
+var busStop = [
     {
         id: 11,
         name: "Bajki",
@@ -35,7 +40,7 @@ var dane = [
     },
     {
         id: 52,
-        name: "ChaÅ‚ubiÅ„skiego",
+        name: "Chałubińskiego",
         pos: {
             x: 4,
             y: 11

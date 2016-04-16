@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +7,11 @@
     <title>My website</title>
     <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
+  <body ng-controller="HomeCtrl">
     <div class="container"><nav class="container-fluid navbar-inverse well-lg">
     <a href="http://test.transport.jfdz.infoshareaca.nazwa.pl/" target="_blank">
     <img alt="Autobus" src="../../foto/logo-autobus.png" width="50" height="50"></a>
-    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{name}}</a></p>
 </nav>
 
       <!--include ./components/slide_show_on_page.html--><div class="container-fluid text-center">
@@ -46,6 +46,14 @@
     </div>
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>-->
+<!-- Main script -->
+<script src="app/assets/js/main.js"></script>
+<script src="app/assets/js/fb.js"></script>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
