@@ -4,7 +4,7 @@ body {
 }
  article{
 
-     background-image: url("../");
+
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center ;
@@ -29,7 +29,7 @@ body {
 }
 
 .container {
-    background-image: url("images/foto_background1.jpg");
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center ;
