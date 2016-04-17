@@ -1,0 +1,63 @@
+extends ./layouts/bootstrap.jade
+
+block body
+    .container
+        include ./components/nav2.html
+
+
+        .row
+            h2 Zaplanuj podróż
+            form
+
+
+                //<label for="date-picker-2" class="control-label">B</label>
+                //<div class="controls">
+                //    <div class="input-group">
+                //        <input id="date-picker-2" type="text" class="date-picker form-control" />
+                //        <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+
+
+
+                .form-group
+                    label.control-label(for='date-picker-2') Wybierz dzień
+                    .controls
+                        .input-group
+                            input.date-picker.form-control(
+                                id='date-picker'
+                                type='text'
+                                )
+                            label.input-group-addon.btn(for='date-picker')
+                                span.glyphicon.glyphicon-calendar
+
+                .form-group
+                    label Przystanek
+                    select.form-control(
+                        name='busstop'
+                    )
+                        option Wybierz Przystanek
+                        option Przystanek 1
+                        option Przystanek 2
+                        option Przystanek 3
+
+                .form-group
+                    label Linia
+                    select.form-control(
+                        name='line'
+                    )
+                        option Wybierz Linię
+                        option Linia 101
+                        option Linia 102
+                        option Linia 103
+
+                .form-group
+                    label Godzina
+                    select.form-control(
+                        name='hours'
+                    )
+                        option Wybierz Godzinę
+                        option 10:10
+                        option 12:12
+                        option 15:14
+
+
+

@@ -1,6 +1,6 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/bin/node',
-1 verbose cli   '/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/bin/npm',
+1 verbose cli [ '/home/liliana/.nvm/versions/node/v5.10.0/bin/node',
+1 verbose cli   '/home/liliana/.nvm/versions/node/v5.10.0/bin/npm',
 1 verbose cli   'start' ]
 2 info using npm@3.8.3
 3 info using node@v5.10.0
@@ -9,25 +9,25 @@
 6 silly lifecycle ex-2@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle ex-2@1.0.0~start: ex-2@1.0.0
 8 verbose lifecycle ex-2@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle ex-2@1.0.0~start: PATH: /home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/lib/node_modules/npm/bin/node-gyp-bin:/home/agnieszkacieslawska/workspace/jfdz-transport-app/prototypes/node_modules/.bin:/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/bin:/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-10 verbose lifecycle ex-2@1.0.0~start: CWD: /home/agnieszkacieslawska/workspace/jfdz-transport-app/prototypes
+9 verbose lifecycle ex-2@1.0.0~start: PATH: /home/liliana/.nvm/versions/node/v5.10.0/lib/node_modules/npm/bin/node-gyp-bin:/home/liliana/WebstormProjects/jfdz-transport-app/prototypes/node_modules/.bin:/home/liliana/.nvm/versions/node/v5.10.0/bin:/home/liliana/.nvm/versions/node/v5.10.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+10 verbose lifecycle ex-2@1.0.0~start: CWD: /home/liliana/WebstormProjects/jfdz-transport-app/prototypes
 11 silly lifecycle ex-2@1.0.0~start: Args: [ '-c', 'gulp' ]
 12 silly lifecycle ex-2@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle ex-2@1.0.0~start: Failed to exec start script
 14 verbose stack Error: ex-2@1.0.0 start: `gulp`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/lib/node_modules/npm/lib/utils/lifecycle.js:239:16)
+14 verbose stack     at EventEmitter.<anonymous> (/home/liliana/.nvm/versions/node/v5.10.0/lib/node_modules/npm/lib/utils/lifecycle.js:239:16)
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at EventEmitter.emit (events.js:185:7)
-14 verbose stack     at ChildProcess.<anonymous> (/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at ChildProcess.<anonymous> (/home/liliana/.nvm/versions/node/v5.10.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at ChildProcess.emit (events.js:185:7)
 14 verbose stack     at maybeClose (internal/child_process.js:850:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid ex-2@1.0.0
-16 verbose cwd /home/agnieszkacieslawska/workspace/jfdz-transport-app/prototypes
-17 error Linux 3.19.0-41-generic
-18 error argv "/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/bin/node" "/home/agnieszkacieslawska/.nvm/versions/node/v5.10.0/bin/npm" "start"
+16 verbose cwd /home/liliana/WebstormProjects/jfdz-transport-app/prototypes
+17 error Linux 3.19.0-37-generic
+18 error argv "/home/liliana/.nvm/versions/node/v5.10.0/bin/node" "/home/liliana/.nvm/versions/node/v5.10.0/bin/npm" "start"
 19 error node v5.10.0
 20 error npm  v3.8.3
 21 error code ELIFECYCLE
