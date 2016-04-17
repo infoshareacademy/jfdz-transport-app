@@ -1,9 +1,18 @@
 
 body {
     font-family: 'Play', sans-serif;
+    background: url("http://www.geekwork.pl/wp-content/uploads/2015/12/quality-500958_1280-1080x772.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+
 
 }
- article{
+
+image{
+width: 100%;  hight:100%;
+
+}
+ form{
 
 
      background-repeat: no-repeat;
@@ -59,7 +68,12 @@ body {
 
 li {
 
-    font-size: 20px;
-    background-color: rgba(250,250,250, 0.8);
-    margin-top:0;
+    font-size: 50px;
+    font-family: "Bitstream Charter";
+    margin-top: auto;
+
+}
+
+
+
 }
