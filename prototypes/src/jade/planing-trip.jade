@@ -10,24 +10,32 @@ block body
             form
 
 
-                //<label for="date-picker-2" class="control-label">B</label>
-                //<div class="controls">
-                //    <div class="input-group">
-                //        <input id="date-picker-2" type="text" class="date-picker form-control" />
-                //        <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+                //<div class="form-horizontal">
+                //  <div class="control-group">
+                //      <label for="date-picker-2" class="control-label">Wybierz dzień</label>
+                //      <div class="controls">
+                //          <div class="input-group">
+                //              <input id="date-picker-2" type="text" class="date-picker form-control" />
+                //               <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+                //          </div>
+                //      </div>
+                //    </div>
+                //</div>
 
 
 
-                .form-group
-                    label.control-label(for='date-picker-2') Wybierz dzień
-                    .controls
-                        .input-group
-                            input.date-picker.form-control(
-                                id='date-picker'
-                                type='text'
+                .form-horizontal
+                    .control-group
+                        label.control-label(for='date-picker') Wybierz dzień
+                        .controls
+                            .input-group
+                                input.date-picker.form-control(
+                                    id='date-picker'
+                                    type='text'
                                 )
-                            label.input-group-addon.btn(for='date-picker')
-                                span.glyphicon.glyphicon-calendar
+                                label.input-group-addon.btn(for='date-picker')
+                                    span.glyphicon.glyphicon-calendar
+
 
                 .form-group
                     label Przystanek
