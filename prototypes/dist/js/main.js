@@ -4,6 +4,17 @@ app.controller('HomeCtrl', function ($scope) {
     console.log("Home Controller!");
     $scope.name = 'Agnieszko';
 });
+app.controller('ExampleController', ['$scope', function($scope) {
+        $scope.data = {
+            repeatSelect: null,
+            availableOptions: [
+                {id: '101', name: 'Kołobrzeska'},
+                {id: '201', name: 'Zakopiańska'},
+                {id: '301', name: 'Gdańska'}
+            ],
+        };
+    }]);
+
 
 var busStop = [
     {
