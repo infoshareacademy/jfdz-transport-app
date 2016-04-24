@@ -1,0 +1,13 @@
+extends ./layouts/bootstrap.jade
+
+block body
+    .container
+
+        include ./components/nav2.html
+
+        .busStops(ng-controller="StopsCtrl") Linie
+            ul
+                li(ng-repeat="x in lines") linia: <b>{{ x.name }} {{ stops[0].name}}</b>
+                    ul
+                        li(ng-repeat="y in lines.stops") przystanek: {{ y.stops.name }},
+

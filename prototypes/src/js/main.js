@@ -15,6 +15,13 @@ app.controller('ExampleController', ['$scope', function($scope) {
         };
     }]);
 
+app.controller('StopsCtrl', function ($scope, $http) {
+    $http.get("http://isa-api.herokuapp.com/transport/lines.json").success(function (data) {
+        $scope.lines = data;
+        $scope.lines.stops = data;
+        console.log($scope.lines[1].stops);
+    });
+});
 
 var busStop = [
     {
