@@ -30,8 +30,12 @@
                     <form name="myForm">
                         <label for="repeatSelect"> Wybierz przystanek: </label>
                         <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
-                            <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}
+                            <!--<option ng-repeat="option in data.availableOptions" value="{{option.stops[2].id}}">{{option.stops[2].name}}-->
+                            <!--</option>-->
+                            <option ng-repeat="option in data" value="{{option.id}}">{{option.name}}
                             </option>
+
+
                         </select>
                     </form>
                     <hr>
