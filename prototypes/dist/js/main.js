@@ -11,7 +11,7 @@ app.controller('ExampleController', ['$scope', function($scope) {
                 {id: '101', name: 'Kołobrzeska'},
                 {id: '201', name: 'Zakopiańska'},
                 {id: '301', name: 'Gdańska'}
-            ],
+            ]
         };
     }]);
 
@@ -660,11 +660,8 @@ var busStop = [
 ];
 
 $(document).ready(function() {
-    $(".date-picker").datepicker();
-
-    $(".date-picker").on("change", function () {
-        var id = $(this).attr("id");
-        var val = $("label[for='" + id + "']").text();
-        // $("#msg").text(val + " changed");
+    $('#dp1').datepicker({
+        format: 'mm-dd-yyyy'
     });
 });
+
