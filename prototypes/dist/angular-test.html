@@ -18,9 +18,9 @@
 
       <div ng-controller="StopsCtrl" class="busStops">Linie
         <ul>
-          <li ng-repeat="x in lines">linia: <b>{{ x.name }} {{ stops[0].name}}</b>
+          <li ng-repeat="x in lines">linia: <b>{{ x.name }} </b>
             <ul>
-              <li ng-repeat="y in lines.stops">przystanek: {{ y.stops.name }},</li>
+              <li ng-repeat="y in x.stops">{{ y.name }}</li>
             </ul>
           </li>
         </ul>
