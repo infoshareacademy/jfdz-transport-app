@@ -1,19 +1,82 @@
+//https://docs.angularjs.org/api/ng/filter/filter?p0=ExampleController&p1=not%20a%20function,%20got%20undefined
 var app = angular.module("app", []);
 
 app.controller('HomeCtrl', function ($scope) {
     console.log("Home Controller!");
     $scope.name = 'Agnieszko';
 });
-app.controller('ExampleController', ['$scope', function($scope) {
-        $scope.data = {
-            repeatSelect: null,
-            availableOptions: [
-                {id: '101', name: 'Kołobrzeska'},
-                {id: '201', name: 'Zakopiańska'},
-                {id: '301', name: 'Gdańska'}
-            ],
-        };
-    }]);
+
+app.controller('MainCtrl', function($scope) {
+
+    $scope.q = 3;
+
+    $scope.myList = [{
+        id: "obj1",
+        content: [{
+            id: 1,
+            name: 'attr 1'
+        }, {
+            id: 2,
+            name: 'attr 2'
+        }, {
+            id: 3,
+            name: 'attr 2'
+        }]
+    }, {
+        id: "obj2",
+        content: [{
+            id: 4,
+            name: 'attr 3'
+        }, {
+            id: 5,
+            name: 'attr 5'
+        }, {
+            id: 6,
+            name: 'attr 6'
+        }]
+    }, {
+        id: "obj3",
+        content: [{
+            id: 3,
+            name: 'attr 7'
+        }, {
+            id: 8,
+            name: 'attr 8'
+        }, {
+            id: 9,
+            name: 'attr 9'
+        }]
+    }];
+});
+
+app.filter('ExampleController', function() {
+    return function(input, id) {
+        var i=0, len=input.length;
+        for (; i<len; i++) {
+            if (+input[i].busNumber == +id) {
+                return input[i];
+            }
+        }
+        return null;
+    }
+});
+
+app.controller('ExampleController', ['$scope', '$filter', function ($scope, $filter) {
+    $scope.data = {
+        repeatSelect: null,
+        availableOptions: [
+            {busNumber: '101', name: 'Kołobrzeska'},
+            {busNumber: '201', name: 'Zakopiańska'},
+            {busNumber: '301', name: 'Gdańska'}
+        ],
+    };
+    $scope.showdetails = function (busNumber) {
+        var found = $filter('getById')($scope.data,busNumber);
+        console.log(found);
+        $scope.selected = JSON.stringify(found);
+    }
+
+}]);
 
 
 var busStop = [
@@ -659,12 +722,3 @@ var busStop = [
     }
 ];
 
-$(document).ready(function() {
-    $(".date-picker").datepicker();
-
-    $(".date-picker").on("change", function () {
-        var id = $(this).attr("id");
-        var val = $("label[for='" + id + "']").text();
-        $("#msg").text(val + " changed");
-    });
-});
