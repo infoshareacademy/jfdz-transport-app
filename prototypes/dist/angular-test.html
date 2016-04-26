@@ -19,9 +19,20 @@
       <div ng-controller="StopsCtrl" class="busStops">Linie
         <ul>
           <li ng-repeat="x in lines">linia: <b>{{ x.name }} </b>
-            <ul>
-              <li ng-repeat="y in x.stops">{{ y.name }}</li>
-            </ul>
+            <div class="godziny">{{ x.departures }}</div>
+            <div class="czasy">{{ x.dTimes }}</div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>przystanek</th>
+                  <th>godzina</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="y in x.stops">
+                <td>{{ y.name }}</td>
+                <td ng-repeat="z in x.dTimes">{{ [z] }}</td>
+              </tr>
+            </table>
           </li>
         </ul>
       </div>
