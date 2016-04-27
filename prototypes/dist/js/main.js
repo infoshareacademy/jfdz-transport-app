@@ -43,3 +43,10 @@ app.controller('ExampleController', ['$scope', '$http', '$log', function($scope,
         //};
     }]);
 
+app.controller('StopsCtrl', function ($scope, $http) {
+    $http.get("http://isa-api.herokuapp.com/transport/lines.json").success(function (data) {
+        $scope.lines = data;
+        console.log(data[0].stops[1]);
+        console.log(data[0].dTimes[1]);
+    });
+});
