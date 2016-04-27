@@ -29,8 +29,8 @@
                 <div ng-controller="ExampleController">
                     <form name="myForm">
                         <label for="repeatSelect"> Wybierz przystanek: </label>
-                        <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
-                            <option ng-repeat="option in data.availableOptions.stops" value="{{option.id}}">{{option.name}}
+                        <select name="repeatSelect" id="repeatSelect" ng-model="busesName.repeatSelect">
+                            <option ng-repeat="option in busesName" value="{{option.id}}">{{option.name}}
                             </option>
                         </select>
                     </form>
@@ -39,7 +39,7 @@
 
                     <table class="table table-striped">
                         <tr>
-                            <td> {{data.repeatSelect}}</td>
+                            <td> {{busesName.repeatSelect}}</td>
                             <td>Kierunek</td>
                             <td>godziny</td>
                         </tr>

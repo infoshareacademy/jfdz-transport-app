@@ -6,12 +6,12 @@ app.controller('HomeCtrl', function ($scope) {
 });
 app.controller('ExampleController', ['$scope', '$http', '$log', function($scope, $http, $log) {
 
-    $scope.data = [];
+    $scope.busesName = [];
 
     $http.get('http://isa-api.herokuapp.com/transport/stops.json')
         .success(function (data, status, headers, config) {
 
-            $scope.data = data;
+            $scope.busesName = data;
             $log.info('Działa!');
 
         })
