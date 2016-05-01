@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="myApp" >
+<head>
+    <meta charset="utf-8">
+    <title>Todos $http</title>
+    <!--<link rel="stylesheet" href="style.css">-->
+    <!--<script>document.write("<base href=\"" + document.location + "\" />");</script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js"></script>
+    <!--<script src="app.js"></script>-->
+</head>
+<body ng-controller="SampleController">
+<ul>
+    <li ng-repeat="(departures,stops) in lines">
+        {{departures.hours}} - <em>{{stops}}</em>
+    </li>
+</ul>
+
+<script>
+    var myApp = angular.module('myApp', []);
+
+    myApp.controller('SampleController', function($scope, $http) {
+        $http.get('lines.json')
+                .then(function(res){
+                    $scope.lines = res.data;
+                });
+    });
+
+</script>
+</body>
+</html>
