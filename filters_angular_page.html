@@ -11,34 +11,53 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
+    <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin"
+            src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
     <script>
-        var myApp = angular.module('myApp',[]);
-        myApp.controller('SampleController',
-                function ($scope, $http) {
-             $http.get('lines.json')
-               .then(function (res) {
-             $scope.lines = res.data;
-             $scope.json_arr = res.data;
-             $scope.options =
-             $scope.num = function (arr) {
-                     return arr.length > 2 ? 2 : 3;
-                       };
+        var myApp = angular.module('myApp', []);
+        myApp.controller('SampleController', function ($scope, $http) {
+            $http.get('lines.json').then(function (res) {
+                $scope.lines = res.data;
+                $http.get('stops.json').then(function (res1) {
+                    $scope.stops = res1.data;
 
-             $scope.count = true;
-             $scope.itemFilter = function (item) {
-                     var filters = $scope.lines.filter(function (element, idx, array) {
-                     return element.selected;
-                     }) || [];
-                      var matched = true;
-             filters.forEach(function (line) {
-             matched = matched && item.attrs.indexOf(line.name) >= 0;
-                      });
-                     return matched;
-                     };
-                   });
-//
+                    $scope.json_arr = res.data;
+                    $scope.options =
+                            $scope.num = function (arr) {
+                                return arr.length > 2 ? 2 : 3;
+                            };
+
+                    myApp.filter('busFilter', [function($filter) {
+                        return function(inputArray, searchCriteria, txnType){
+                            if(!angular.isDefined(searchCriteria) || searchCriteria == ''){
+                                return inputArray;
+                            }
+                            var data=[];
+                            angular.forEach(inputArray, function(item){
+                                if(item.txnType == txnType){
+                                    if(item.payee.name.toLowerCase().indexOf(searchCriteria.toLowerCase()) != -1){
+                                        data.push(item);
+                                    }
+                                }
+                            });
+                            return data;
+                        };
+                    }]);
+                    $scope.count = true;
+                    $scope.itemFilter = function (item) {
+                        var filters = $scope.lines.filter(function (element, idx, array) {
+                                    return element.selected;
+                                }) || [];
+                        var matched = true;
+                        filters.forEach(function (line) {
+                            matched = matched && item.attrs.indexOf(line.name) >= 0;
+                        });
+                        return matched;
+                    };
+                });
             });
+        });
+        //                });
     </script>
 
 </head>
@@ -49,9 +68,9 @@
             <div class="form-group">
                 <label for="input2" class="col-sm-4 control-label">Wybierz przystanek</label>
                 <div class="col-sm-6">
-                    <select id="input2" class="form-control" ng-model="filterTxn.lines">
+                    <select id="input2" class="form-control" ng-model="filterTxn.stops ">
                         <option value="">Przystanki</option>
-                        <option ng-repeat="item in lines" value="{{item.stops[0].name}}">{{item.stops[0].name}}</option>
+                        <option ng-repeat="item in stops" value="{{item.name}}">{{item.name}}</option>
 
                     </select>
                 </div>
@@ -70,7 +89,7 @@
             </thead>
             <tbody>
             <!--<tr ng-repeat="vals in json_arr| filter: filterTxn | 'name'">-->
-            <tr ng-repeat="vals in json_arr">
+            <tr ng-repeat="vals in json_arr | filter:filterTxn ">
                 <td>{{$index + 1}}</td>
                 <td>{{vals.stops[0].name|uppercase }}</td>
                 <td>{{ vals.name }}</td>
@@ -86,24 +105,27 @@
             <p>Dokąd jedzie: {{ vals.stops[vals.stops.length-1].name}}</p>
             <p>Godziny: {{vals.departures[0].hour}}:{{vals.departures[0].minutes}}:{{vals.departures[0].seconds}} </p>
         </div>
-        <div ng-repeat="vals in json_arr ">Godziny: {{vals.departures.hour}}:{{vals.departures.minutes}}:{{vals.departures.seconds}} </div>
+        <div ng-repeat="vals in json_arr ">Godziny:
+            {{vals.departures.hour}}:{{vals.departures.minutes}}:{{vals.departures.seconds}}
+        </div>
 
         <div class="subtitle">Select categories to filter cards</div>
         <div class="options_container">
             <label ng-repeat="option in options" class="option" id="option">
-                <input type="checkbox" class="check" ng-model="option.selected" />	<span>{{option.name | uppercase}}</span>
+                <input type="checkbox" class="check" ng-model="option.selected"/>
+                <span>{{option.name | uppercase}}</span>
 
             </label>
         </div>
         <!--<div class="cards" id="cards">-->
-            <!--<div ng-repeat="card in cards | filter:itemFilter" class="card_background">-->
-                <!--<div class="card_title">{{card.name | uppercase}}</div>-->
-                <!--<div class="card_properties">-->
-                    <!--<div ng-repeat="attr in card.attrs">{{attr}} <span class="card_properties_number">+{{num(card.attrs)}}</span>-->
+        <!--<div ng-repeat="card in cards | filter:itemFilter" class="card_background">-->
+        <!--<div class="card_title">{{card.name | uppercase}}</div>-->
+        <!--<div class="card_properties">-->
+        <!--<div ng-repeat="attr in card.attrs">{{attr}} <span class="card_properties_number">+{{num(card.attrs)}}</span>-->
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
         <!--</div>-->
         <script src="ang.js"></script>
         </body>
