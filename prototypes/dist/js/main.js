@@ -6,19 +6,29 @@ app.controller('HomeCtrl', function ($scope) {
 });
 app.controller('ExampleController', ['$scope', '$http', '$log', function($scope, $http, $log) {
 
-    $scope.busesName = [];
+    $scope.busesStops = [];
+    $scope.busesLines =[];
 
     $http.get('http://isa-api.herokuapp.com/transport/stops.json')
         .success(function (data, status, headers, config) {
 
-            $scope.busesName = data;
+            $scope.busesStops = data;
             $log.info('Działa!');
 
         })
         .error(function (data, status, headers, config) {
-
             $log.error('Wystąpił błąd '+status+' podczas pobierania listy przystanków!');
+        });
 
+    $http.get('http://isa-api.herokuapp.com/transport/lines.json')
+    .success(function (data, status, headers, config) {
+
+        $scope.busesLines = data;
+        $log.info('Działa 2!');
+
+    })
+        .error(function (data, status, headers, config) {
+            $log.error('Wystąpił błąd '+status+' podczas pobierania listy lini!');
         });
 
     //$scope.data =
@@ -43,10 +53,3 @@ app.controller('ExampleController', ['$scope', '$http', '$log', function($scope,
         //};
     }]);
 
-app.controller('StopsCtrl', function ($scope, $http) {
-    $http.get("http://isa-api.herokuapp.com/transport/lines.json").success(function (data) {
-        $scope.lines = data;
-        console.log(data[0].stops[1]);
-        console.log(data[0].dTimes[1]);
-    });
-});
