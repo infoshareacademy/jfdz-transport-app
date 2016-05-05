@@ -53,3 +53,34 @@ app.controller('ExampleController', ['$scope', '$http', '$log', function($scope,
         //};
     }]);
 
+
+app.controller('ExampleController', ['$scope', '$filter', function ($scope, $filter) {
+    $scope.data = {
+        repeatSelect: null,
+        availableOptions: [
+            {busNumber: '101', name: 'Kołobrzeska'},
+            {busNumber: '201', name: 'Zakopiańska'},
+            {busNumber: '301', name: 'Gdańska'}
+        ],
+    };
+    $scope.showdetails = function (busNumber) {
+        var found = $filter('getById')($scope.data, busNumber);
+        console.log(found);
+        $scope.selected = JSON.stringify(found);
+    }
+
+}]);
+
+app.controller('StopsCtrl', function ($scope, $http) {
+    $http.get("http://isa-api.herokuapp.com/transport/lines.json").success(function (data) {
+        $scope.lines = data;
+        console.log(data[0].stops[1]);
+        console.log(data[0].dTimes[1]);
+    });
+});
+
+$(document).ready(function() {
+    $('#dp1').datepicker({
+        format: 'mm-dd-yyyy'
+    });
+});
