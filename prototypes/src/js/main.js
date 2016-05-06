@@ -22,18 +22,6 @@ app.controller('MainCtrl', function($scope) {
             {id: 8, name: 'attr 8'},
             {id: 9, name: 'attr 9'}]}];
 });
-<<<<<<< HEAD
-app.controller('ExampleController', ['$scope', function($scope) {
-        $scope.data = {
-            repeatSelect: null,
-            availableOptions: [
-                {id: '101', name: 'Kołobrzeska'},
-                {id: '201', name: 'Zakopiańska'},
-                {id: '301', name: 'Gdańska'}
-            ]
-        };
-    }]);
-=======
 
 app.filter('ExampleController', function() {
     return function(input, id) {
@@ -110,7 +98,6 @@ app.controller('ExampleController', ['$scope', '$filter', function ($scope, $fil
     }
 
 }]);
->>>>>>> 0ca85be6f7aeb898b69764eda0652959d1e9404e
 
 app.controller('StopsCtrl', function ($scope, $http) {
     $http.get("http://isa-api.herokuapp.com/transport/lines.json").success(function (data) {
@@ -1875,14 +1862,8 @@ var Lines = [
             {"hour": 16, "minutes": 51, "seconds": 0}],
         "latencies": [46.92847269074991, 95.18130847346038, 30.893575540045276]},
 
-<<<<<<< HEAD
-$(document).ready(function() {
-    $('#dp1').datepicker({
-        format: 'mm-dd-yyyy'
-    });
-});
 
-=======
+
     {   "id": 9, "name": "109",
         "stops": [
             {"id": 30, "name": "Bogatka I"},
@@ -1914,4 +1895,9 @@ $(document).ready(function() {
         "latencies": [14.909054337767884, 4.131228701444343, 69.08868980617262, 75.84812570386566]
     }
 ]
->>>>>>> 0ca85be6f7aeb898b69764eda0652959d1e9404e
+
+$(document).ready(function() {
+    $('#dp1').datepicker({
+        format: 'mm-dd-yyyy'
+    });
+});

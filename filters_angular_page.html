@@ -16,9 +16,9 @@
     <script>
         var myApp = angular.module('myApp', []);
         myApp.controller('SampleController', function ($scope, $http) {
-            $http.get('lines.json').then(function (res) {
+            $http.get('http://isa-api.herokuapp.com/transport/lines.json').then(function (res) {
                 $scope.lines = res.data;
-                $http.get('stops.json').then(function (res1) {
+                $http.get('http://isa-api.herokuapp.com/transport/stops.json').then(function (res1) {
                     $scope.stops = res1.data;
 
                     $scope.json_arr = res.data;
