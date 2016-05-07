@@ -29,17 +29,28 @@
                     $scope.filteredLines = [];
                     filteredLines.forEach(function (item) {
 
+                        var minutesToAdd = opoznienie / 60;
+                        var secondsToAdd = opoznienie % 60;
+
+
                         var departures = [];
+                        item.departures.forEach(function (departure) {
+                            departures.push({
+                                hours: departure.hour,
+                                minutes: departure.minutes,
+                                seconds: departure.seconds
+                            });
+                        });
 
                         var line = {
                             firstStop: item.stops[0].name,
                             lastStop: item.stops[item.stops.length - 1].name,
-                            lineNo: item.latencies.name,
+                            lineNo: item.name,
                             departures: departures
-                        }
+                        };
                         $scope.filteredLines.push(line);
                     });
-                    console.log($scope.lines);
+                    console.log($scope.filteredLines);
                 }
             });
         });
@@ -82,14 +93,13 @@
                 <td>{{ line.lastStop|uppercase}}</td>
                 <td>
                     <span ng-repeat="departure in line.departures">
-                        {{departure.hour}}:{{departure.minutes}}:{{departure.seconds}},
+                        {{departure.hours}}:{{departure.minutes}}:{{departure.seconds}},
                     </span>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <script src="ang.js"></script>
     </div>
 </div>
 </body>
