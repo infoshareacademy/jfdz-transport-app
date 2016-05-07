@@ -9,7 +9,7 @@ body {
 }
 
 image{
-width: 100%;  hight:100%;
+width: auto;  hight:auto;
 
 }
  form{
@@ -17,7 +17,7 @@ width: 100%;  hight:100%;
 
      background-repeat: no-repeat;
      background-size: cover;
-     background-position: center ;
+     background-position: center center;
      background-attachment: fixed;
      padding-bottom: 30px;
      padding-top: 30px;
