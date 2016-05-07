@@ -9,19 +9,19 @@ body {
 }
 
 image{
-width: 100%;  hight:100%;
+    width: 100%;  hight:100%;
 
 }
- form{
+form{
 
 
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center ;
-     background-attachment: fixed;
-     padding-bottom: 30px;
-     padding-top: 30px;
- }
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center ;
+    background-attachment: fixed;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
 
 .row {
 
