@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.3",
+    "ng-datepicker": "^1.0.2",
     "node-sass": "^3.4.2"
   },
   "devDependencies": {

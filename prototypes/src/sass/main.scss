@@ -1,13 +1,14 @@
 @import "vars.sass";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 
-.btn-danger {
-  background: #000;
-  width: 3000px/2;
+.img-circle {
+  height: 250px;
+  width: 250px;
+  margin: 3px auto;
+  border: 2px solid #a21716;
+  background-color: #a21716;
+  border-radius: 50%;
 }
-
-
-.navbar-default {
-
-  background-color: #00b3ee;
+.container .marketing {
+  margin-top: 70px;
 }
