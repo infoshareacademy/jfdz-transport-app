@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My website</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body ng-controller="HomeCtrl">
+    <div class="container">
+<nav class="container-fluid navbar-inverse well-lg">
+    <a href="http://test.transport.jfdz.infoshareaca.nazwa.pl/" target="_blank">
+    <img alt="Autobus" src="../../foto/logo-autobus.png" width="50" height="50"></a>
+    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{name}}</a></p>
+</nav>
+
+      <div class="row">
+        <h2>Zaplanuj podróż</h2>
+        <form>
+          <!--<div class="form-horizontal">-->
+          <!--  <div class="control-group">-->
+          <!--      <label for="date-picker-2" class="control-label">Wybierz dzień</label>-->
+          <!--      <div class="controls">-->
+          <!--          <div class="input-group">-->
+          <!--              <input id="date-picker-2" type="text" class="date-picker form-control" />-->
+          <!--               <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>-->
+          <!--          </div>-->
+          <!--      </div>-->
+          <!--    </div>-->
+          <!--</div>-->
+          
+          
+          <div class="form-horizontal">
+            <div class="control-group">
+              <label for="dp1" class="control-label">Wybierz dzień</label>
+              <div class="controls">
+                <div class="input-group">
+                  <input id="dp1" type="text" class="date-picker form-control">
+                  <label for="dp1" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Przystanek</label>
+            <select name="busstop" class="form-control">
+              <option>Wybierz Przystanek</option>
+              <option>Przystanek 1</option>
+              <option>Przystanek 2</option>
+              <option>Przystanek 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Linia</label>
+            <select name="line" class="form-control">
+              <option>Wybierz Linię</option>
+              <option>Linia 101</option>
+              <option>Linia 102</option>
+              <option>Linia 103</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Godzina</label>
+            <select name="hours" class="form-control">
+              <option>Wybierz Godzinę</option>
+              <option>10:10</option>
+              <option>12:12</option>
+              <option>15:14</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

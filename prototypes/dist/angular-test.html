@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My website</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body ng-controller="HomeCtrl">
+    <div class="container">
+<nav class="container-fluid navbar-inverse well-lg">
+    <a href="http://test.transport.jfdz.infoshareaca.nazwa.pl/" target="_blank">
+    <img alt="Autobus" src="../../foto/logo-autobus.png" width="50" height="50"></a>
+    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{name}}</a></p>
+</nav>
+
+      <div ng-controller="StopsCtrl" class="busStops">Linie
+        <ul>
+          <li ng-repeat="x in lines">linia: <b>{{ x.name }} </b>
+            <div class="godziny">{{ x.departures }}</div>
+            <div class="czasy">{{ x.dTimes }}</div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>przystanek</th>
+                  <th>godzina</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="y in x.stops">
+                <td>{{ y.name }}</td>
+                <td ng-repeat="z in x.dTimes">{{ [z] }}</td>
+              </tr>
+            </table>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

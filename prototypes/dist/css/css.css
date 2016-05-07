@@ -1,0 +1,79 @@
+
+body {
+    font-family: 'Play', sans-serif;
+    background: url("http://www.geekwork.pl/wp-content/uploads/2015/12/quality-500958_1280-1080x772.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+
+
+}
+
+image{
+width: 100%;  hight:100%;
+
+}
+ form{
+
+
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center ;
+     background-attachment: fixed;
+     padding-bottom: 30px;
+     padding-top: 30px;
+ }
+
+.row {
+
+    margin-right:0;
+}
+
+
+
+.row:hover{
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+}
+
+.container {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center ;
+    background-attachment: fixed;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+}
+
+.active {
+    border-radius: 50%;
+    width:5.8em;
+    float: right;
+    font-weight: bold;
+
+}
+
+.form-group{
+    -webkit-box-shadow: 5px 5px 25px -4px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 5px 5px 25px -4px rgba(0, 0, 0, 1);
+    box-shadow: 5px 5px 25px -4px rgba(0, 0, 0, 1);
+    background-color: white;
+
+
+}
+
+li {
+
+    font-size: 50px;
+    font-family: "Bitstream Charter";
+    margin-top: auto;
+
+}
+
+
+
+}
