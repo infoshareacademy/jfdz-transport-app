@@ -1,6 +1,6 @@
 var planning = angular.module('planning',[]);
-
 planning.constant('planningAPI', 'http://isa-api.herokuapp.com/transport/lines.json');
+
 
 planning.service('planningService', function($http, planningAPI){
 
@@ -22,7 +22,7 @@ planning.controller('planningController', function($scope, planningService){
     $scope.success1 = function (response) {
 
         $scope.planning.loading = false;
-        $scope.planning.name = response.data.name;
+        $scope.planning = response.data;
 
         console.log(response);
 

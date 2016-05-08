@@ -1,5 +1,6 @@
 .container
     .row(ng-controller="planningController")
+
         h2 Zaplanuj podróż
             form
                 .form-horizontal
@@ -15,35 +16,12 @@
                                     span.glyphicon.glyphicon-calendar
 
                 .form-group
-                    label Przystanek
+                    label Przystanek2
                     select.form-control(
                     name='busstop'
                     )
-                        option Wybierz Przystanek
-                        option Przystanek 1
-                        option Przystanek 2
-                        option Przystanek 3
+                        option(ng-repeat="line in planning") {{ line.name }}
 
-                .form-group
-                    label Linia
-                    select.form-control(
-                    name='line'
-                    )
-                        option Wybierz Linię
-                        option Linia 101
-                        option Linia 102
-                        option Linia 103
 
-                .form-group
-                    label Godzina
-                    select.form-control(
-                    name='hours'
-                    )
-                        option Wybierz Godzinę
-                        option 10:10
-                        option 12:12
-                        option 15:14
-
-            .lines(ng-repeat="line in lines") linie {{line.name}}
 
 

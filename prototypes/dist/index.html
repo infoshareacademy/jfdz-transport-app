@@ -7,6 +7,7 @@
     <title>My website</title>
     <link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/datepicker.css">
   </head>
   <body>
     <div class="container">
@@ -15,32 +16,32 @@
     <img alt="Autobus" src="../../foto/logo-autobus.png" width="50" height="50"></a>
     <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{name}}</a></p>
 </nav>
-    <div class="container-fluid text-center">
+<div class="container-fluid text-center">
     <div class="container marketing">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-sm-4">
                 <img class="img-circle"
                      src="../../foto/feature-hand-600.jpg"
-                     alt="Generic placeholder image" width="240" height="240">
+                     alt="Generic placeholder image" >
 
                 <div class="bus1"><h2>Wybierz przystanek</h2></div>
-                <p><a class="btn btn-default" href="#" role="button">Wybierz ulubione przystanki i śledź rozkłady jazdy.</a></p>
-
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
+                <p><a class="btn btn-default" href="#" role="button">Wybierz ulubione przystanki i śledź rozkłady
+                    jazdy.</a></p>
+            </div>
+            <div class="col-sm-4">
                 <img class="img-circle"
                      src="../../foto/feature-chair-600.jpg"
-                     alt="Generic placeholder image" width="240" height="240">
+                     alt="Generic placeholder image" >
 
                 <div class="bus1"><h2>Spóźniony autobs</h2></div>
                 <p>Sprawdź czy Twój autobus odejdzie punktualnie. </p>
 
                 <p><a class="btn btn-default" href="#" role="button">Opóźnienia &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
+            </div>
+            <div class="col-sm-4">
                 <img class="img-circle"
                      src="../../foto/feature-people-600.jpg"
-                     alt="Generic placeholder image" width="240" height="240">
+                     alt="Generic placeholder image" >
 
                 <h2>Twoja podróż</h2>
 
@@ -50,7 +51,7 @@
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
     </div>
-    </div>
+</div>
 
       <div ng-view class="view"></div>
     </div>
@@ -58,8 +59,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
     <script src="./js/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="./js/bootstrap-datepicker.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/datepicker.js"></script>
     <script src="./js/planning.js"></script>
   </body>
 </html>
