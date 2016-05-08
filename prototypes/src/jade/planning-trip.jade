@@ -3,9 +3,8 @@
 
         h2 Zaplanuj podróż
             form
-                .form-horizontal
-                    .control-group
-                        label.control-label(for='dp1') Wybierz dzień
+                .form-group
+                    label.control-label(for='dp1') Wybierz dzień
                         .controls
                             .input-group
                                 input.date-picker.form-control(
@@ -14,10 +13,19 @@
                                 ng-model='formday'
                                 )
 
+
+                .form-group
+                    label Przystanek:
+                    select.form-control(
+                    name='busstop'
+                    ng-model='formstops'
+                    )
+                        option(ng-repeat="stop in planning") {{ stop.name }}
+
                 .form-group
                     label Linia nr:
                     select.form-control(
-                    name='busstop'
+                    name='buslines'
                     ng-model='formlines'
                     )
                         option(ng-repeat="line in planning") {{ line.name }}
@@ -25,8 +33,10 @@
                     button(ng-click="addLine()") Dodaj Plan
 
                     .row
+
+                    .col-md-4 {{day | date:'shortDate' }}
                     .col-md-4 {{lines}}
-                    .col-md-4 {{day}}
+
 
 
 
