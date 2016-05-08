@@ -1,30 +1,27 @@
-var planning = angular.module('planning',[]);
-planning.constant('planningAPI', 'http://isa-api.herokuapp.com/transport/lines.json');
 
+var planning = angular.module('planning', []);
 
-planning.service('planningService', function($http, planningAPI){
+planning.controller('planningController', function($scope, busService){
 
-    this.getPlanningFor = function() {
-        var url = planningAPI;
-
-        return $http({
-            method: 'GET',
-            url: url
-        })
-    }
-});
-
-
-planning.controller('planningController', function($scope, planningService){
     $scope.planning = {};
+    $scope.xlines = 0;
     $scope.planning.loading = true;
 
     $scope.success1 = function (response) {
-
         $scope.planning.loading = false;
+
+
+        $scope.planning = {};
         $scope.planning = response.data;
 
-        console.log(response);
+
+        console.log(response.data);
+
+        $scope.addLine = function() {
+           console.log('Linia:',$scope.formlines);
+           $scope.lines = $scope.formlines;
+           $scope.day = $scope.formday;
+        }
 
     };
 
@@ -33,7 +30,7 @@ planning.controller('planningController', function($scope, planningService){
         $scope.planning.error = true;
     };
 
-    planningService.getPlanningFor().then($scope.success1,$scope.error1 );
+    busService.getLinesFor().then($scope.success1,$scope.error1 );
 
 });
 

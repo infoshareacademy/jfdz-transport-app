@@ -8,17 +8,21 @@
             <label for="dp1" class="control-label">Wybierz dzień</label>
             <div class="controls">
               <div class="input-group">
-                <input id="dp1" type="text" class="date-picker form-control"/>
+                <input id="dp1" type="text" ng-model="formday" class="date-picker form-control"/>
                 <label for="dp1" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
               </div>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label>Przystanek2</label>
-          <select name="busstop" class="form-control">
+          <label>Linia nr:</label>
+          <select name="busstop" ng-model="formlines" class="form-control">
             <option ng-repeat="line in planning">{{ line.name }}</option>
           </select>
+          <button ng-click="addLine()">Dodaj Plan</button>
+          <div class="row"></div>
+          <div class="col-md-4">{{lines}}</div>
+          <div class="col-md-4">{{day}}</div>
         </div>
       </form>
     </h2>

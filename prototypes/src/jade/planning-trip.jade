@@ -11,16 +11,26 @@
                                 input.date-picker.form-control(
                                 id='dp1'
                                 type='text'
+                                ng-model='formday'
                                 )
                                 label.input-group-addon.btn(for='dp1')
                                     span.glyphicon.glyphicon-calendar
 
                 .form-group
-                    label Przystanek2
+                    label Linia nr:
                     select.form-control(
                     name='busstop'
+                    ng-model='formlines'
                     )
                         option(ng-repeat="line in planning") {{ line.name }}
+
+                    button(ng-click="addLine()") Dodaj Plan
+
+                    .row
+                    .col-md-4 {{lines}}
+                    .col-md-4 {{day}}
+
+
 
 
 
