@@ -73,8 +73,8 @@
                         line.departures.forEach(function (departure) {
                             departures.push({
                                 hours: parseInt(departure.hour) + parseInt(hh),
-                                minutes: parseInt(departure.minutes) + parseInt(mm) % (parseInt(departure.seconds) + parseInt(ss)),
-                                seconds: (parseInt(departure.seconds) + parseInt(ss))
+                                minutes: parseInt(departure.minutes) + parseInt(mm),
+                                seconds: parseInt(departure.seconds) + parseInt(ss)
                             });
                         });
 
