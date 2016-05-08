@@ -84,9 +84,17 @@
                             lineNo: line.name,
                             departures: departures
                         };
+
                         $scope.filteredLines.push(line);
+
+                        localStorage.setItem("saved", JSON.stringify($scope.filteredLines));
+                        var asString = localStorage.getItem("saved");
+                        var obj = JSON.parse(asString);
+                        console.log(line);
+
                     });
                     console.log($scope.filteredLines);
+
                 }
             });
         });
