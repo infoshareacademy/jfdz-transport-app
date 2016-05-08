@@ -69,9 +69,9 @@
                         var departures = [];
                         line.departures.forEach(function (departure) {
                             departures.push({
-                                hours: departure.hour + hh,
-                                minutes: departure.minutes + mm,
-                                seconds: departure.seconds + ss
+                                hours: departure.hour += hh,
+                                minutes: departure.minutes += mm,
+                                seconds: departure.seconds += ss
                             });
                         });
 
