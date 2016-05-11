@@ -1,27 +1,25 @@
 
 body {
     font-family: 'Play', sans-serif;
-    background: url("http://www.geekwork.pl/wp-content/uploads/2015/12/quality-500958_1280-1080x772.jpg");
-    background-repeat: no-repeat;
+    background: url("http://www.ictshop.pl/wp-content/uploads/E-podpis.png");
+    background-repeat:no-repeat;
     background-position: top;
 
 
 }
 
 image{
-width: 100%;  hight:100%;
-
+    background-position: top;
+    font-size: 50%;
 }
- form{
-
-
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center ;
-     background-attachment: fixed;
-     padding-bottom: 30px;
-     padding-top: 30px;
- }
+form{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    padding-bottom: 10px;
+    padding-top: 400px;
+}
 
 .row {
 
@@ -76,4 +74,4 @@ li {
 
 
 
-}
+
