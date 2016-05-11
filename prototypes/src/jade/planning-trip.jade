@@ -1,7 +1,7 @@
 .container
     .row(ng-controller="planningController")
 
-        h2 Zaplanuj podróż
+            h2 Zaplanuj podróż
             form
                 .form-group
                     label.control-label(for='dp1') Wybierz dzień
@@ -17,25 +17,32 @@
                 .form-group
                     label Przystanek:
                     select.form-control(
-                    name='busstop'
-                    ng-model='formstops'
+                        name='busstop'
+                        ng-model='formstops'
                     )
-                        option(ng-repeat="stop in planning") {{ stop.name }}
+                        option(ng-repeat="stop in planStops" value="{{$index}}") {{ stop.name }}
+
+                .row
+                    .wybrano wybrano: {{stop.name}}
+                    .lista(ng-repeat="item in buses")
+                        .linie() linie: {{item.line}} kierunek: {{item.destination}}
+                        .godziny odjazdy:
+                            span(ng-repeat="hours in item.departures") {{hours}},
 
                 .form-group
                     label Linia nr:
                     select.form-control(
-                    name='buslines'
-                    ng-model='formlines'
+                        name='buslines'
+                        ng-model='formlines'
                     )
-                        option(ng-repeat="line in planning") {{ line.name }}
+                        option(ng-repeat="bus in planStops.bus") {{ bus.name }}
 
                     button(ng-click="addLine()") Dodaj Plan
 
-                    .row
 
-                    .col-md-4 {{day | date:'shortDate' }}
-                    .col-md-4 {{lines}}
+                    .row
+                        .col-md-4 {{day | date:'dd-MM-yyyy' }}
+                        .col-md-4 {{stops}}
 
 
 

@@ -9,7 +9,6 @@ planning.controller('planningController', function($scope, busService){
     $scope.lines = function (response) {
         $scope.planning.loading = false;
         $scope.planning = response.data;
-        console.log(response.data);
     };
 
     $scope.planStops = {};
@@ -17,9 +16,37 @@ planning.controller('planningController', function($scope, busService){
     $scope.stops = function(resStops) {
         $scope.planStops = resStops.data;
 
+
+        $scope.$watch('formstops', function (item) {
+
+            if (item != undefined) {
+                console.log(item);
+                var id = item;
+
+                $scope.buses = [];
+
+                var x = $scope.planStops[id].bus;
+                x.forEach(function (line) {
+                    console.log(line);
+                    $scope.buses.push(line);
+                });
+
+                
+            }
+
+
+
+        });
+        
+
+
+
+      //  console.log($scope.planStops[0].bus[0]);
+
         $scope.addLine = function() {
             $scope.day = $scope.formday;
-            $scope.lines = $scope.formstops;
+            $scope.stops = $scope.formstops;
+            $scope.lines = $scope.formlines;
         }
 
     };

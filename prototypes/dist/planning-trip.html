@@ -1,39 +1,41 @@
 
 <div class="container">
   <div ng-controller="planningController" class="row">
-    <h2>Zaplanuj podróż
-      <form>
-        <div class="form-group">
-          <label for="dp1" class="control-label">Wybierz dzień
-            <div class="controls">
-              <div class="input-group">
-                <input id="dp1" type="date" ng-model="formday" class="date-picker form-control"/>
-              </div>
+    <h2>Zaplanuj podróż</h2>
+    <form>
+      <div class="form-group">
+        <label for="dp1" class="control-label">Wybierz dzień
+          <div class="controls">
+            <div class="input-group">
+              <input id="dp1" type="date" ng-model="formday" class="date-picker form-control"/>
             </div>
-          </label>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Przystanek:</label>
+        <select name="busstop" ng-model="formstops" class="form-control">
+          <option ng-repeat="stop in planStops" value="{{$index}}">{{ stop.name }}</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="wybrano">wybrano: {{stop.name}}</div>
+        <div ng-repeat="item in buses" class="lista">
+          <div class="linie">linie: {{item.line}} kierunek: {{item.destination}}</div>
+          <div class="godziny">odjazdy:<span ng-repeat="hours in item.departures">{{hours}},</span></div>
         </div>
-        <div class="form-group">
-          <label>Przystanek:</label>
-          <select name="busstop" ng-model="formstops" class="form-control">
-            <option ng-repeat="stop in planStops" value="{{ stop.name }}">{{ stop.name }}</option>
-          </select>
+      </div>
+      <div class="form-group">
+        <label>Linia nr:</label>
+        <select name="buslines" ng-model="formlines" class="form-control">
+          <option ng-repeat="bus in planStops.bus">{{ bus.name }}</option>
+        </select>
+        <button ng-click="addLine()">Dodaj Plan</button>
+        <div class="row">
+          <div class="col-md-4">{{day | date:'dd-MM-yyyy' }}</div>
+          <div class="col-md-4">{{stops}}</div>
         </div>
-
-        wybrano {{formstops}}
-
-        <div class="form-group">
-          <label>Linia nr:</label>
-          <select name="buslines" ng-model="formlines" class="form-control">
-            <option ng-repeat="linenr in planStops.line">{{ linenr.bus }}</option>
-          </select>
-          <button ng-click="addLine()">Dodaj Plan</button>
-
-          <div class="row"></div>
-          <div class="col-md-4">{{day | date:'shortDate' }}</div>
-          <div class="col-md-4">{{lines}}</div>
-
-        </div>
-      </form>
-    </h2>
+      </div>
+    </form>
   </div>
 </div>

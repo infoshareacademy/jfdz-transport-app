@@ -26,9 +26,8 @@
                 if ($scope.stopsFilter) {
                     var filteredLines = $filter('filter')($scope.lines, $scope.stopsFilter);
                     $scope.filteredLines = [];
+
                     filteredLines.forEach(function (line) {
-
-
                         var indexOfSelectedStop;
                         line.stops.forEach(function (stop) {
                             if (stop.id == $scope.stopsFilter.stops) {
@@ -59,18 +58,24 @@
 // If you were building a timestamp instead of a duration, you would uncomment the following line to get 12-hour (not 24) time
 // if (hh > 12) {hh = hh % 12;}
 // These lines ensure you have two-digits
-                        if (hh < 10) {hh = "0"+hh;}
-                        if (mm < 10) {mm = "0"+mm;}
-                        if (ss < 10) {ss = "0"+ss;}
+                        if (hh < 10) {
+                            hh = "0" + hh;
+                        }
+                        if (mm < 10) {
+                            mm = "0" + mm;
+                        }
+                        if (ss < 10) {
+                            ss = "0" + ss;
+                        }
 // This formats your string to HH:MM:SS
-                        var t = hh+":"+mm+":"+ss;
+                        var t = hh + ":" + mm + ":" + ss;
                         console.log(t);
 
                         var departures = [];
                         line.departures.forEach(function (departure) {
                             departures.push({
                                 hours: departure.hour,
-                                minutes: departure.minutes ,
+                                minutes: departure.minutes,
                                 seconds: departure.seconds
                             });
                         });
@@ -83,12 +88,13 @@
                         };
                         $scope.filteredLines.push(line);
                     });
+
+
                     console.log($scope.filteredLines);
                 }
             });
         });
     </script>
-
 
 
 </head>
