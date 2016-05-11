@@ -15,8 +15,8 @@ app.config(function ($routeProvider) {
         })
 });
 
-$(document).ready(function() {
-    $('#dp1').datepicker({
-        format: 'mm-dd-yyyy'
-    });
-});
+// $(document).ready(function() {
+//     $('#dp1').datepicker({
+//         format: 'mm-dd-yyyy'
+//     });
+// });

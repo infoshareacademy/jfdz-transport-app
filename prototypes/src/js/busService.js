@@ -1,6 +1,6 @@
 var buses = angular.module('buses',[]);
-buses.constant('linesAPI', 'http://isa-api.herokuapp.com/transport/lines.json');
-buses.constant('stopsAPI', 'http://isa-api.herokuapp.com/transport/stops.json');
+buses.constant('linesAPI', 'http://isa-api-sl.herokuapp.com/api/busLines');
+buses.constant('stopsAPI', 'http://isa-api-sl.herokuapp.com/api/busStops');
 
 buses.service('busService', function($http, linesAPI, stopsAPI){
 

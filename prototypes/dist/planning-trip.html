@@ -15,18 +15,23 @@
         <div class="form-group">
           <label>Przystanek:</label>
           <select name="busstop" ng-model="formstops" class="form-control">
-            <option ng-repeat="stop in planning">{{ stop.name }}</option>
+            <option ng-repeat="stop in planStops" value="{{ stop.name }}">{{ stop.name }}</option>
           </select>
         </div>
+
+        wybrano {{formstops}}
+
         <div class="form-group">
           <label>Linia nr:</label>
           <select name="buslines" ng-model="formlines" class="form-control">
-            <option ng-repeat="line in planning">{{ line.name }}</option>
+            <option ng-repeat="linenr in planStops.line">{{ linenr.bus }}</option>
           </select>
           <button ng-click="addLine()">Dodaj Plan</button>
+
           <div class="row"></div>
           <div class="col-md-4">{{day | date:'shortDate' }}</div>
           <div class="col-md-4">{{lines}}</div>
+
         </div>
       </form>
     </h2>
