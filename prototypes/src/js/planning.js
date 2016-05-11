@@ -20,26 +20,14 @@ planning.controller('planningController', function($scope, busService){
         $scope.$watch('formstops', function (item) {
 
             if (item != undefined) {
-                console.log(item);
                 var id = item;
-
                 $scope.buses = [];
-
                 var x = $scope.planStops[id].bus;
                 x.forEach(function (line) {
-                    console.log(line);
                     $scope.buses.push(line);
                 });
-
-                
             }
-
-
-
         });
-        
-
-
 
       //  console.log($scope.planStops[0].bus[0]);
 
@@ -48,7 +36,6 @@ planning.controller('planningController', function($scope, busService){
             $scope.stops = $scope.formstops;
             $scope.lines = $scope.formlines;
         }
-
     };
 
     $scope.error1 = function(response){

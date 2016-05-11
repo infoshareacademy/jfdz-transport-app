@@ -4,13 +4,8 @@
     <h2>Zaplanuj podróż</h2>
     <form>
       <div class="form-group">
-        <label for="dp1" class="control-label">Wybierz dzień
-          <div class="controls">
-            <div class="input-group">
-              <input id="dp1" type="date" ng-model="formday" class="date-picker form-control"/>
-            </div>
-          </div>
-        </label>
+        <label for="dp1" class="control-label">Wybierz dzień</label>
+        <input id="dp1" type="date" ng-model="formday" class="date-picker form-control"/>
       </div>
       <div class="form-group">
         <label>Przystanek:</label>
@@ -28,12 +23,13 @@
       <div class="form-group">
         <label>Linia nr:</label>
         <select name="buslines" ng-model="formlines" class="form-control">
-          <option ng-repeat="bus in planStops.bus">{{ bus.name }}</option>
+          <option ng-repeat="item in buses">{{item.line}} kierunek: {{item.destination}}</option>
         </select>
-        <button ng-click="addLine()">Dodaj Plan</button>
+        <button ng-click="addLine()" class="btn btn-default">Dodaj Plan</button>
         <div class="row">
-          <div class="col-md-4">{{day | date:'dd-MM-yyyy' }}</div>
-          <div class="col-md-4">{{stops}}</div>
+          <div class="col-md-4">Data: {{day | date:'dd-MM-yyyy' }}</div>
+          <div class="col-md-4">Przystanek: {{stops}}</div>
+          <div class="col-md-4">Linia: {{lines}}</div>
         </div>
       </div>
     </form>

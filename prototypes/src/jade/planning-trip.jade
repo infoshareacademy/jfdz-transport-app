@@ -5,9 +5,7 @@
             form
                 .form-group
                     label.control-label(for='dp1') Wybierz dzień
-                        .controls
-                            .input-group
-                                input.date-picker.form-control(
+                    input.date-picker.form-control(
                                 id='dp1'
                                 type='date'
                                 ng-model='formday'
@@ -35,14 +33,15 @@
                         name='buslines'
                         ng-model='formlines'
                     )
-                        option(ng-repeat="bus in planStops.bus") {{ bus.name }}
+                        option(ng-repeat="item in buses") {{item.line}} kierunek: {{item.destination}}
 
-                    button(ng-click="addLine()") Dodaj Plan
+                    button.btn.btn-default(ng-click="addLine()") Dodaj Plan
 
 
                     .row
-                        .col-md-4 {{day | date:'dd-MM-yyyy' }}
-                        .col-md-4 {{stops}}
+                        .col-md-4 Data: {{day | date:'dd-MM-yyyy' }}
+                        .col-md-4 Przystanek: {{stops}}
+                        .col-md-4 Linia: {{lines}}
 
 
 
