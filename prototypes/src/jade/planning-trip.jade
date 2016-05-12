@@ -21,7 +21,7 @@
                 hr
 
                 .form-group
-                    label Przystanek:
+                    label 1. Wybierz przystanek:
                     select.form-control(
                         name='busstop'
                         ng-model='formstops'
@@ -36,7 +36,7 @@
                             span(ng-repeat="hours in item.departures") {{hours}},
 
                 .form-group
-                    label Linia nr:
+                    label 2. Wybierz autobus linii :
                     select.form-control(
                         name='buslines'
                         ng-model='formlines'
@@ -44,7 +44,7 @@
                         option(ng-repeat="item in buses" value='{{$index}}') {{item.line}} kierunek: {{item.destination}}
 
                 .form-group
-                    label Godziny odjazdu:
+                    label 3. Wybierz godzinę odjazdu:
                     select.form-control(
                         ng-model='formhours'
                     )
