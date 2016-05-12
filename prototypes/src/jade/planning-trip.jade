@@ -3,14 +3,22 @@
 
             h2 Zaplanuj podróż
             form
+
+                .form-group
+                    label Nazwa podróży
+                    input(
+                        ng-model="formname"
+                        )
+
                 .form-group
                     label.control-label(for='dp1') Wybierz dzień
                     input.date-picker.form-control(
                                 id='dp1'
                                 type='date'
                                 ng-model='formday'
-                                )
+                    )
 
+                hr
 
                 .form-group
                     label Przystanek:
@@ -21,9 +29,9 @@
                         option(ng-repeat="stop in planStops" value="{{$index}}") {{ stop.name }}
 
                 .row
-                    .wybrano wybrano: {{stop.name}}
+                    h4 Lista autobusów i odjazdów:
                     .lista(ng-repeat="item in buses")
-                        .linie() linie: {{item.line}} kierunek: {{item.destination}}
+                        .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
                         .godziny odjazdy:
                             span(ng-repeat="hours in item.departures") {{hours}},
 
@@ -33,15 +41,35 @@
                         name='buslines'
                         ng-model='formlines'
                     )
-                        option(ng-repeat="item in buses") {{item.line}} kierunek: {{item.destination}}
+                        option(ng-repeat="item in buses" value='{{$index}}') {{item.line}} kierunek: {{item.destination}}
 
-                    button.btn.btn-default(ng-click="addLine()") Dodaj Plan
+                .form-group
+                    label Godziny odjazdu:
+                    select.form-control(
+                        ng-model='formhours'
+                    )
+                        option(ng-repeat="hours in lines") {{hours}}
 
 
-                    .row
-                        .col-md-4 Data: {{day | date:'dd-MM-yyyy' }}
-                        .col-md-4 Przystanek: {{stops}}
-                        .col-md-4 Linia: {{lines}}
+                button.btn.btn-default(ng-click="addLine()") Dodaj Etap Podróży
+
+                hr
+
+                .data data podróży: {{day | date:'dd-MM-yyyy' }}
+                .tripname nazwa: {{tripname}}
+
+                hr
+
+                .row
+                    table.table.table-striped
+                        thead
+                            th Przystanek:
+                            th Linia:
+                            th Godzina Odjazdu
+                        tr(ng-repeat='item in planningStage')
+                            td {{item.stops}}
+                            td {{item.lines}}
+                            td {{item.time}}
 
 
 

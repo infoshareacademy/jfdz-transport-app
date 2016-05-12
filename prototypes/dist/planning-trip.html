@@ -4,9 +4,14 @@
     <h2>Zaplanuj podróż</h2>
     <form>
       <div class="form-group">
+        <label>Nazwa podróży</label>
+        <input ng-model="formname"/>
+      </div>
+      <div class="form-group">
         <label for="dp1" class="control-label">Wybierz dzień</label>
         <input id="dp1" type="date" ng-model="formday" class="date-picker form-control"/>
       </div>
+      <hr/>
       <div class="form-group">
         <label>Przystanek:</label>
         <select name="busstop" ng-model="formstops" class="form-control">
@@ -14,23 +19,42 @@
         </select>
       </div>
       <div class="row">
-        <div class="wybrano">wybrano: {{stop.name}}</div>
+        <h4>Lista autobusów i odjazdów:</h4>
         <div ng-repeat="item in buses" class="lista">
-          <div class="linie">linie: {{item.line}} kierunek: {{item.destination}}</div>
+          <div ng-filter="formlines" class="linie">linie: {{item.line}} kierunek: {{item.destination}}</div>
           <div class="godziny">odjazdy:<span ng-repeat="hours in item.departures">{{hours}},</span></div>
         </div>
       </div>
       <div class="form-group">
         <label>Linia nr:</label>
         <select name="buslines" ng-model="formlines" class="form-control">
-          <option ng-repeat="item in buses">{{item.line}} kierunek: {{item.destination}}</option>
+          <option ng-repeat="item in buses" value="{{$index}}">{{item.line}} kierunek: {{item.destination}}</option>
         </select>
-        <button ng-click="addLine()" class="btn btn-default">Dodaj Plan</button>
-        <div class="row">
-          <div class="col-md-4">Data: {{day | date:'dd-MM-yyyy' }}</div>
-          <div class="col-md-4">Przystanek: {{stops}}</div>
-          <div class="col-md-4">Linia: {{lines}}</div>
-        </div>
+      </div>
+      <div class="form-group">
+        <label>Godziny odjazdu:</label>
+        <select ng-model="formhours" class="form-control">
+          <option ng-repeat="hours in lines">{{hours}}</option>
+        </select>
+      </div>
+      <button ng-click="addLine()" class="btn btn-default">Dodaj Etap Podróży</button>
+      <hr/>
+      <div class="data">data podróży: {{day | date:'dd-MM-yyyy' }}</div>
+      <div class="tripname">nazwa: {{tripname}}</div>
+      <hr/>
+      <div class="row">
+        <table class="table table-striped">
+          <thead>
+            <th>Przystanek:</th>
+            <th>Linia:</th>
+            <th>Godzina Odjazdu</th>
+          </thead>
+          <tr ng-repeat="item in planningStage">
+            <td>{{item.stops}}</td>
+            <td>{{item.lines}}</td>
+            <td>{{item.time}}</td>
+          </tr>
+        </table>
       </div>
     </form>
   </div>

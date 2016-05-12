@@ -27,12 +27,11 @@ planning.controller('planningController', function ($scope, busService) {
                 if (item != undefined) {
                     $scope.$watch('formlines', function (fitem) {
                         $scope.lines = [];
-                        var y = $scope.planStops[item].bus[fitem];
-                        console.log($scope.planStops[item].bus[fitem].departures);
+                        var y = $scope.planStops[item].bus[fitem].departures;
+                        //console.log($scope.planStops[item].bus[fitem].departures);
                         y.forEach(function (line) {
                             $scope.lines.push(line);
                         });
-                        console.log($scope.lines);
                     });
                 }
             }
@@ -43,6 +42,7 @@ planning.controller('planningController', function ($scope, busService) {
 
         $scope.addLine = function () {
             $scope.day = $scope.formday;
+            $scope.tripname = $scope.formname
             $scope.stops = $scope.formstops;
             $scope.lines = $scope.formlines;
             $scope.time = $scope.formhours;
