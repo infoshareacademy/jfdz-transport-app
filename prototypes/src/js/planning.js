@@ -11,11 +11,8 @@ planning.controller('planningController', function ($scope, busService) {
     };
 
     $scope.planStops = {};
-
     $scope.stops = function (resStops) {
         $scope.planStops = resStops.data;
-
-
         $scope.$watch('formstops', function (item) {
 
             if (item != undefined) {
@@ -36,10 +33,8 @@ planning.controller('planningController', function ($scope, busService) {
                 }
             }
         });
-
-
+        
         $scope.planningStage = [];
-
         $scope.addLine = function () {
             $scope.day = $scope.formday;
             $scope.tripname = $scope.formname
@@ -52,11 +47,7 @@ planning.controller('planningController', function ($scope, busService) {
                 lines: $scope.lines,
                 time: $scope.time
             });
-            //console.log($scope.planningStage);
-
         }
-
-
     };
 
     $scope.error1 = function (response) {
