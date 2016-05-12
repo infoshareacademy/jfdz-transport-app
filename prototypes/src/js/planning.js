@@ -37,16 +37,29 @@ planning.controller('planningController', function ($scope, busService) {
         $scope.planningStage = [];
         $scope.addLine = function () {
             $scope.day = $scope.formday;
-            $scope.tripname = $scope.formname
+            $scope.tripname = $scope.formname;
             $scope.stops = $scope.formstops;
             $scope.lines = $scope.formlines;
             $scope.time = $scope.formhours;
+            $scope.done = $scope.done;
+
             $scope.planningStage.push({
                 day: $scope.day,
+                tripname: $scope.tripname
+            });
+
+            $scope.planningStage.stage.push({
                 stops: $scope.stops,
                 lines: $scope.lines,
-                time: $scope.time
+                time: $scope.time,
+                done: false
             });
+        };
+
+        //console.log($scope.planningStage);
+
+        $scope.saveTrip = function () {
+            localStorage.setItem('trip', JSON.stringify($scope.planningStage));
         }
     };
 
@@ -62,5 +75,22 @@ planning.controller('planningController', function ($scope, busService) {
     busService.getLinesFor().then($scope.lines, $scope.error1);
     busService.getStopsFor().then($scope.stops, $scope.error2);
 
+});
+
+planning.controller('TabController', function(){
+    this.tab = 1;
+    this.setTab = function(newValue){
+        this.tab = newValue;
+    };
+    this.isSet = function(tabName){
+        return this.tab === tabName;
+    };
+});
+
+planning.controller('getTripController', function($scope){
+    $scope.saved = localStorage.getItem('trip');
+    $scope.todos = JSON.parse($scope.saved);
+    //console.log(localStorage.getItem('trip'));
+    //console.log($scope.planningStage);
 });
 
