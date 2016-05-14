@@ -56,9 +56,9 @@
                 <th>Godzina Odjazdu</th>
               </thead>
               <tr ng-repeat="item in planningStage">
-                <td>{{item.stops}}</td>
-                <td>{{item.lines}}</td>
-                <td>{{item.time}}</td>
+                <td>{{item.stage.stops}}</td>
+                <td>{{item.stage.lines}}</td>
+                <td>{{item.stage.time}}</td>
               </tr>
             </table>
           </div>
@@ -68,16 +68,22 @@
       <div ng-show="tab.isSet(2)" class="div">
         <h2>Twoje podróże</h2>
         <div ng-controller="getTripController as gettrip" class="row">
+          <div class="data">data podróży: {{ day | date:'dd-MM-yyyy' }}</div>
+          <div class="tripname">nazwa: {{ tripname }}</div>
           <table class="table table-striped">
             <thead>
               <th>Przystanek:</th>
               <th>Linia:</th>
               <th>Godzina Odjazdu</th>
+              <th>Zatwierdź</th>
             </thead>
             <tr ng-repeat="item in todos">
-              <td>{{item.stops}}</td>
-              <td>{{item.lines}}</td>
-              <td>{{item.time}}</td>
+              <td>{{item.stage.stops}}</td>
+              <td>{{item.stage.lines}}</td>
+              <td>{{item.stage.time}}</td>
+              <td>
+                <input type="checkbox" ng-model="item.stage.done" ng-change="updatetripdone()" value="item.stage.done"/>
+              </td>
             </tr>
           </table>
         </div>
