@@ -14,7 +14,29 @@
             src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
     <script>
         var myApp = angular.module('myApp', []);
-        myApp.controller('SampleController', function ($scope, $http, $filter) {
+
+        myApp.factory('listEdit', function() {
+            var list1 = [],
+                    maxLength = 5,
+                    minLength = 1;
+
+            return {
+                add: function(item) {
+                    if( list1.length >= maxLength )
+                        return 'Too many list items';
+                    list1.push(item);
+                    return item + ' is added';
+                },
+
+                linkList: function(list){
+                    list1 = list;
+                }
+            };
+        });
+
+
+
+        myApp.controller('SampleController', ['$scope', '$http', '$filter', 'listEdit', function ($scope, $http, $filter, listEdit) {
             $http.get('http://isa-api.herokuapp.com/transport/lines.json').then(function (res) {
                 $scope.lines = res.data;
                 $http.get('http://isa-api.herokuapp.com/transport/stops.json').then(function (res1) {
@@ -25,9 +47,9 @@
             $scope.$watch('stopsFilter.stops', function () {
                 if ($scope.stopsFilter) {
                     var filteredLines = $filter('filter')($scope.lines, $scope.stopsFilter);
+
                     $scope.filteredLines = [];
                     filteredLines.forEach(function (line) {
-
 
                         var indexOfSelectedStop;
                         line.stops.forEach(function (stop) {
@@ -68,7 +90,6 @@
                             console.log(t);
                             console.log(ss);
 
-
                         var departures = [];
                         line.departures.forEach(function (departure) {
                             departures.push({
@@ -85,7 +106,10 @@
                             departures: departures
                         };
 
-                        $scope.filteredLines.push(line);
+
+                         $scope.filteredLines.push(line);
+
+
 
                         localStorage.setItem("saved", JSON.stringify($scope.filteredLines));
                         var asString = localStorage.getItem("saved");
@@ -93,11 +117,67 @@
                         console.log(line);
 
                     });
-                    console.log($scope.filteredLines);
+
+
+
+                    $scope.list = [];
+                    listEdit.linkList( $scope.list );
+
+                    $scope.addToList = function() {
+                        $scope.feedback = listEdit.add($scope.todo);
+                    };
+
+                    $scope.remove = function(index) {
+                        $scope.feedback =  listEdit.remove(index);
+                    };
 
                 }
+
+
+
+
             });
-        });
+
+//            myApp.factory('listEdit', function() {
+//                var list1 = [],
+//                        maxLength = 5,
+//                        minLength = 1;
+//
+//                return {
+//                    add: function(item) {
+//                        if( list1.length >= maxLength )
+//                            return 'Too many list items';
+//                        list1.push(item);
+//                        return item + ' is added';
+//                    },
+//
+//                    linkList: function(list){
+//                        list1 = list;
+//                    }
+//                };
+//            });
+//
+////Controller methods
+//            myApp.controller('main', ['$scope', 'listEdit', function($scope, listEdit) {
+//
+//                $scope.list = [];
+//                listEdit.linkList( $scope.list );
+//
+//                $scope.addToList = function() {
+//                    $scope.feedback = listEdit.add($scope.todo);
+//                };
+//
+//                $scope.remove = function(index) {
+//                    $scope.feedback =  listEdit.remove(index);
+//                };
+//
+//            }]);
+
+
+
+
+
+        }]);
     </script>
 
 
@@ -113,11 +193,16 @@
 
                 <div class="col-sm-6">
                     <select id="input2" class="form-control" ng-model="stopsFilter.stops ">
-                        <option value="">Przystanki</option>
-                        <option ng-repeat="item in stops" value="{{item.id}}">{{item.name}}</option>
+                            <option value="">Przystanki</option>
+                            <option ng-repeat="item in stops" value="{{item.id}}">{{item.name}}</option>
 
                     </select>
+                    <button ng-click ="addBusStop()">Add Item</button>
+                    <div ng-repeat="todo in myApp track by $index">
+                        <span ng-click="remove($index)">{{todo}}</span>
+                    </div>
                 </div>
+
             </div>
         </form>
         <h3>Lista autobusów</h3>
@@ -143,6 +228,18 @@
                     </span>
                 </td>
             </tr>
+            <div>{{feedback}}&nbsp;</div>
+            <select  ng-model="todo">
+                <option value="">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <button ng-click="addToList()">Add to List</button>
+            <div ng-repeat="todo in list track by $index">
+                <span ng-click="remove($index)">{{todo}}</span>
+            </div>
+
+
             </tbody>
         </table>
 
