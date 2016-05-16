@@ -6,25 +6,24 @@ h2 Stops
          .form-group
             label.col-sm-4.control-label(for="input2") Wybierz przystanek
             .col-sm-6
-                select.form-control(id="input2" ng-model="stopsFilter.stops")
+                select.form-control(id="input2" ng-model="stopsFilter")
                     option(value="") Przystanki
-                    option(ng-repeat="item in stops" value="{{item.id}}") {{item.name}}
-                button.btn.btn-default(ng-click="addstops()") Dodaj przystanek
+                    option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
 
-        h3 Lista autobusów
-        table.table.table-striped.table-bordered(ng-repeat="item in mystops")
+        h3 Lista autobusów - {{stopsFilter}}
+        table.table.table-striped.table-bordered
                 thead
                     tr
                         th #
-                        th Przystanek nr {{ mystop }}
                         th Nr linii
-                        th Przystanek końcowy
+                        th Kierunek
                         th Godziny odjazdu
                     tbody
-                        tr(ng-repeat="line in filteredLines")
+                        tr(ng-repeat="item in mstops")
                             td {{$index + 1}}
-                            td {{line.firstStop|uppercase }}
-                            td {{line.lineNo }}
-                            td {{line.lastStop|uppercase}}
-                            td
-                                span(ng-repeat="departure in line.departures") {{departure.hours}}:{{departure.minutes}}:{{departure.seconds}},
+                            td {{item.line }}
+                            td {{item.destination }}
+                            td(style="width: 500px;")
+                                span(ng-repeat="hours in item.departures") {{hours}},
+
+        button.btn.btn-default(ng-click="addstops()") Dodaj przystanek do ulubionych
