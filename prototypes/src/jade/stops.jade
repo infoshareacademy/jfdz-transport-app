@@ -1,2 +1,30 @@
-include ./components/landing_page_v2.html
 h2 Stops
+
+.row(ng-controller="StopsController")
+    .col-md-8.col-md-offset-2
+        form.form-horizontal(role="form")
+         .form-group
+            label.col-sm-4.control-label(for="input2") Wybierz przystanek
+            .col-sm-6
+                select.form-control(id="input2" ng-model="stopsFilter.stops")
+                    option(value="") Przystanki
+                    option(ng-repeat="item in stops" value="{{item.id}}") {{item.name}}
+                button.btn.btn-default(ng-click="addstops()") Dodaj przystanek
+
+        h3 Lista autobusów
+        table.table.table-striped.table-bordered(ng-repeat="item in mystops")
+                thead
+                    tr
+                        th #
+                        th Przystanek nr {{ mystop }}
+                        th Nr linii
+                        th Przystanek końcowy
+                        th Godziny odjazdu
+                    tbody
+                        tr(ng-repeat="line in filteredLines")
+                            td {{$index + 1}}
+                            td {{line.firstStop|uppercase }}
+                            td {{line.lineNo }}
+                            td {{line.lastStop|uppercase}}
+                            td
+                                span(ng-repeat="departure in line.departures") {{departure.hours}}:{{departure.minutes}}:{{departure.seconds}},

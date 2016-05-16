@@ -1,5 +1,6 @@
-var myApp = angular.module('myApp', []);
-myApp.controller('SampleController', function ($scope, $http, $filter, $busService) {
+var mystops = angular.module('mystops', []);
+mystops.controller('StopsController', function ($scope, $http, $filter, busService) {
+    
     $http.get('http://isa-api.herokuapp.com/transport/lines.json').then(function (res) {
         $scope.lines = res.data;
         $http.get('http://isa-api.herokuapp.com/transport/stops.json').then(function (res1) {
@@ -10,7 +11,7 @@ myApp.controller('SampleController', function ($scope, $http, $filter, $busServi
     $scope.$watch('stopsFilter.stops', function () {
         if ($scope.stopsFilter) {
             var filteredLines = $filter('filter')($scope.lines, $scope.stopsFilter);
-            $scope.filteredLines = [];
+           $scope.filteredLines = [];
 
             filteredLines.forEach(function (line) {
                 var indexOfSelectedStop;
@@ -73,8 +74,15 @@ myApp.controller('SampleController', function ($scope, $http, $filter, $busServi
                 };
                 $scope.filteredLines.push(line);
             });
+            
+            $scope.mystops = [];
 
-
+            $scope.addstops = function() {
+                $scope.mystop = $scope.stopsFilter.stops;
+                $scope.mystops.push($scope.stopsFilter.stops);
+                console.log($scope.mystops);
+            };
+            
             console.log($scope.filteredLines);
         }
     });
