@@ -16,33 +16,27 @@
     <img alt="Autobus" src="../../foto/logo-autobus.png" width="50" height="50"></a>
     <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{name}}</a></p>
 </nav>
-<form>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label class="sr-only">Email address</label>
-                    <input type="email" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only">Password</label>
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <div class="checkbox">
-                    <label></label>
-                    <input type="checkbox">
-                    <placeholder>Remember me</placeholder>
-                </div>
-                <button type="submit" class="btn btn-default">Zaloguj się</button>
-            </form>
-        </div>
 
-        <div class="col-md-3"></div>
-    </div>
-
-
-</form>
+      <div ng-controller="StopsCtrl" class="busStops">Linie
+        <ul>
+          <li ng-repeat="x in lines">linia: <b>{{ x.name }} </b>
+            <div class="godziny">{{ x.departures }}</div>
+            <div class="czasy">{{ x.dTimes }}</div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>przystanek</th>
+                  <th>godzina</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="y in x.stops">
+                <td>{{ y.name }}</td>
+                <td ng-repeat="z in x.dTimes">{{ [z] }}</td>
+              </tr>
+            </table>
+          </li>
+        </ul>
+      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
@@ -52,6 +46,5 @@
     <script src="./js/datepicker.js"></script>
     <script src="./js/busService.js"></script>
     <script src="./js/planning.js"></script>
-    <script src="./js/stops.js"></script>
   </body>
 </html>

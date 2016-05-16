@@ -1,0 +1,127 @@
+.container
+
+    section(ng-controller="TabController as tab")
+        ul.nav.nav-pills
+            li(ng-class='{ active:tab.isSet(1) }')
+                a(href='' ng-click="tab.setTab(1)") Zaplanuj podróż
+            li(ng-class='{ active:tab.isSet(2) }')
+                a(href='' ng-click="tab.setTab(2)") Twoje podróże
+
+        .row(ng-controller="planningController")
+
+            .div(ng-show="tab.isSet(1)")
+
+                h2 Zaplanuj podróż
+                form
+
+                    .form-group
+                        label Nazwa podróży
+                        input.form-control(
+                        ng-model="formname"
+                        )
+
+                    .form-group
+                        label.control-label(for='dp1') Wybierz dzień
+                        input.date-picker.form-control(
+                        id='dp1'
+                        type='date'
+                        ng-model='formday'
+                        )
+
+                    hr
+
+                    .form-group
+                        label 1. Wybierz przystanek:
+                        select.form-control(
+                        name='busstop'
+                        ng-model='formstops'
+                        )
+                            option(ng-repeat="stop in planStops" value="{{$index}}") {{ stop.name }}
+
+                    .row
+                        h4 Lista autobusów i odjazdów:
+                        .lista(ng-repeat="item in buses")
+                            .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
+                            .godziny odjazdy:
+                                span(ng-repeat="hours in item.departures") {{hours}},
+
+                    .form-group
+                        label 2. Wybierz autobus linii :
+                        select.form-control(
+                        name='buslines'
+                        ng-model='formlines'
+                        )
+                            option(ng-repeat="item in buses" value='{{$index}}') {{item.line}} kierunek: {{item.destination}}
+
+                    .form-group
+                        label 3. Wybierz godzinę odjazdu:
+                        select.form-control(
+                        ng-model='formhours'
+                        placeholder='wybierz godzinę odjazdu'
+                        )
+                            option(ng-repeat="hours in lines") {{hours}}
+
+
+                    button.btn.btn-default(ng-click="addLine()") Dodaj Etap Podróży
+
+                    hr
+
+                    .data data podróży: {{day | date:'dd-MM-yyyy' }}
+                    .tripname nazwa: {{tripname}}
+
+                    hr
+
+                    .row
+                        table.table.table-striped
+                            thead
+                                th Przystanek:
+                                th Linia:
+                                th Godzina Odjazdu
+                            tr(ng-repeat='item in planningStage')
+                                td {{item.stage.stops}}
+                                td {{item.stage.lines}}
+                                td {{item.stage.time}}
+
+
+                    button.btn.btn-default(ng-click="saveTrip()") Zapisz podróż
+
+
+
+            .div(ng-show="tab.isSet(2)")
+
+                h2 Twoje podróże
+
+                .row(ng-controller='getTripController as gettrip')
+
+                    .data data podróży: {{ day | date:'dd-MM-yyyy' }}
+                    .tripname nazwa: {{ tripname }}
+
+                    table.table.table-striped
+                        thead
+                            th Przystanek:
+                            th Linia:
+                            th Godzina Odjazdu
+                            th Zatwierdź
+                        tr(ng-repeat='item in todos')
+                            td {{item.stage.stops}}
+                            td {{item.stage.lines}}
+                            td {{item.stage.time}}
+                            td
+                                input(
+                                    type='checkbox'
+                                    ng-model='item.stage.done'
+                                    ng-change='updatetripdone()'
+                                    value='item.stage.done'
+                                    )
+
+
+
+
+
+
+
+
+
+
+
+
