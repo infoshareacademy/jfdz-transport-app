@@ -74,21 +74,21 @@
 
 //                            var seconds = 9999;
 // multiply by 1000 because Date() requires miliseconds
-                            var date = new Date(seconds * 1000);
-                            var hh = date.getUTCHours();
-                            var mm = date.getUTCMinutes();
-                            var ss = date.getSeconds();
+                        var date = new Date(seconds * 1000);
+                        var hh = date.getUTCHours();
+                        var mm = date.getUTCMinutes();
+                        var ss = date.getSeconds();
 // If you were building a timestamp instead of a duration, you would uncomment the following line to get 12-hour (not 24) time
 // if (hh > 12) {hh = hh % 12;}
 // These lines ensure you have two-digits
-                            if (hh < 10) {hh = "0"+hh;}
-                            if (mm < 10) {mm = "0"+mm;}
-                            if (ss < 10) {ss = "0"+ss;}
+                        if (hh < 10) {hh = "0"+hh;}
+                        if (mm < 10) {mm = "0"+mm;}
+                        if (ss < 10) {ss = "0"+ss;}
 // This formats your string to HH:MM:SS
-                            var t = hh+":"+mm+":"+ss;
+                        var t = hh+":"+mm+":"+ss;
 
-                            console.log(t);
-                            console.log(ss);
+                        console.log(t);
+                        console.log(ss);
 
                         var departures = [];
                         line.departures.forEach(function (departure) {
@@ -107,7 +107,7 @@
                         };
 
 
-                         $scope.filteredLines.push(line);
+                        $scope.filteredLines.push(line);
 
 
 
@@ -193,8 +193,8 @@
 
                 <div class="col-sm-6">
                     <select id="input2" class="form-control" ng-model="stopsFilter.stops ">
-                            <option value="">Przystanki</option>
-                            <option ng-repeat="item in stops" value="{{item.id}}">{{item.name}}</option>
+                        <option value="">Przystanki</option>
+                        <option ng-repeat="item in stops" value="{{item.id}}">{{item.name}}</option>
 
                     </select>
                     <button ng-click ="addBusStop()">Add Item</button>
