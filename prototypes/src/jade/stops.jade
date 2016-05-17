@@ -3,27 +3,34 @@ h2 Stops
 .row(ng-controller="StopsController")
     .col-md-8.col-md-offset-2
         form.form-horizontal(role="form")
-         .form-group
-            label.col-sm-4.control-label(for="input2") Wybierz przystanek
-            .col-sm-6
-                select.form-control(id="input2" ng-model="stopsFilter")
-                    option(value="") Przystanki
-                    option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
+            .form-group
+                label.col-sm-4.control-label(for="input2") Wybierz przystanek
+                .col-sm-6
+                    select.form-control(id="input2" ng-model="stopsFilter")
+                        option(value="") Przystanki
+                        option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
+
+        h3 Moje Przystanki
+
+            .row {{showstops}}
+
+
 
         h3 Lista autobusów - {{stopsFilter}}
         table.table.table-striped.table-bordered
-                thead
-                    tr
-                        th #
-                        th Nr linii
-                        th Kierunek
-                        th Godziny odjazdu
-                    tbody
-                        tr(ng-repeat="item in mstops")
-                            td {{$index + 1}}
-                            td {{item.line }}
-                            td {{item.destination }}
-                            td(style="width: 500px;")
-                                span(ng-repeat="hours in item.departures") {{hours}},
+            thead
+                tr
+                    th #
+                    th Nr linii
+                    th Kierunek
+                    th Godziny odjazdu
+            tbody
+                tr(ng-repeat="item in mstops")
+                    td {{$index + 1}}
+                    td {{item.line }}
+                    td {{item.destination }}
+                    td(style="width: 500px;")
+                        span(ng-repeat="hours in item.departures") {{hours}},
 
         button.btn.btn-default(ng-click="addstops()") Dodaj przystanek do ulubionych
+
