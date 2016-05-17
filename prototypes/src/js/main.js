@@ -10,6 +10,9 @@ app.config(function ($routeProvider) {
         .when('/planning', {
             templateUrl: 'planning-trip.html'
         })
+        .when('/lines', {
+            templateUrl: 'lines.html'
+        })
         .otherwise({
             templateUrl: 'stops.html'
         })

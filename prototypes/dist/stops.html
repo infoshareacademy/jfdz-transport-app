@@ -1,21 +1,6 @@
 
-<h2>Stops</h2>
+<h2>Przystanki</h2>
 <div ng-controller="StopsController" class="row">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <form role="form" class="form-horizontal">
-        <div class="form-group">
-          <label for="input2" class="col-sm-4 control-label">Wybierz przystanek</label>
-          <div class="col-sm-6">
-            <select id="input2" ng-model="stopsFilter" class="form-control">
-              <option value="">Przystanki</option>
-              <option ng-repeat="item in stopsx" value="{{$index}}">{{item.name}}</option>
-            </select>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
   <div class="row">
     <h3>Moje Przystanki</h3>
     <zapisane>w localstorage
@@ -45,6 +30,21 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <form role="form" class="form-horizontal">
+        <div class="form-group">
+          <label for="input2" class="col-sm-4 control-label">Wybierz przystanek</label>
+          <div class="col-sm-6">
+            <select id="input2" ng-model="stopsFilter" class="form-control">
+              <option value="">Przystanki</option>
+              <option ng-repeat="item in stopsx" value="{{$index}}">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
   <div class="row">

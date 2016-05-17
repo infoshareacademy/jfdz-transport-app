@@ -1,15 +1,6 @@
-h2 Stops
+h2 Przystanki
 
 .row(ng-controller="StopsController")
-    .row
-        .col-md-8.col-md-offset-2
-            form.form-horizontal(role="form")
-                .form-group
-                    label.col-sm-4.control-label(for="input2") Wybierz przystanek
-                    .col-sm-6
-                        select.form-control(id="input2" ng-model="stopsFilter")
-                            option(value="") Przystanki
-                            option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
 
     .row
             h3 Moje Przystanki
@@ -24,8 +15,6 @@ h2 Stops
                                 td(style="width: 500px;")
                                     span(ng-repeat="hours in item.departures") {{hours}},
 
-
-
     .row
             .line(ng-repeat="x in mystops") Przystanek: {{x.name}}
                 table.table.table-striped.table-bordered
@@ -37,6 +26,16 @@ h2 Stops
                             td(style="width: 500px;")
                                 span(ng-repeat="hours in item.departures") {{hours}},
 
+
+    .row
+        .col-md-8.col-md-offset-2
+            form.form-horizontal(role="form")
+                .form-group
+                    label.col-sm-4.control-label(for="input2") Wybierz przystanek
+                    .col-sm-6
+                        select.form-control(id="input2" ng-model="stopsFilter")
+                            option(value="") Przystanki
+                            option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
 
     .row
             h3 Lista autobusów - {{stopsFilter}}
