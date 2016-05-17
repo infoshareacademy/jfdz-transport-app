@@ -20,6 +20,22 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
             if (item != undefined) {
                 $scope.mstops = [];
                 var x = $scope.stopsx[item].bus;
+
+                //czas zamiana
+
+                var czas = new Date();
+                var time = '0710';
+                var h = time.slice(0,2);
+                var m = time.slice(2,4);
+
+                czas.setHours(h);
+                czas.setMinutes(m);
+
+                var hours = czas.getHours();
+                var minutes = czas.getMinutes();
+
+                console.log('godzina', hours+':'+minutes);
+
                 x.forEach(function (line) {
                     $scope.mstops.push(line);
                 });
