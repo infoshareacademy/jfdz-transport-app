@@ -12,29 +12,51 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
     $scope.stops = function (resStops) {
 
         $scope.stopsx = resStops.data;
-        $scope.mystops = [];
         $scope.$watch('stopsFilter', function (item) {
 
             console.log($scope.stopsFilter);
 
             if (item != undefined) {
+
+                //czas zamiana
+
+                // var czas = new Date();
+                // var time = '0710';
+                // var h = time.slice(0, 2);
+                // var m = time.slice(2, 4);
+                //
+                // czas.setHours(h);
+                // czas.setMinutes(m);
+                //
+                // var hours = czas.getHours();
+                // var minutes = czas.getMinutes();
+                //
+                // console.log('godzina', hours + ':' + minutes);
+
                 $scope.mstops = [];
                 var x = $scope.stopsx[item].bus;
                 x.forEach(function (line) {
                     $scope.mstops.push(line);
                 });
 
-
                 $scope.addstops = function () {
-
-                    $scope.mystops.push($scope.stopsFilter);
+                    $scope.mystops.push({
+                        id: $scope.stopsx[item].id,
+                        name: $scope.stopsx[item].name,
+                        bus: $scope.stopsx[item].bus
+                    });
                     console.log($scope.mystops);
+                    localStorage.setItem('mystops', JSON.stringify($scope.mystops));
                 };
-
             }
-
-
         });
+        $scope.mystops = [];
+        angular.forEach($scope.mystops, function(item){
+            //$scope.xsline =  $scope.stopsx[item];
+        });
+        
+        $scope.savedstops = JSON.parse(localStorage.getItem('mystops'));
+        
     };
 
     $scope.error1 = function (response) {
@@ -49,8 +71,7 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
     busService.getStopsFor().then($scope.stops, $scope.error2);
 
 
-
-    });
+});
 
 // v. Agi i Kamili
 

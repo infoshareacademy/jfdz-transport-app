@@ -90,9 +90,6 @@ planning.controller('TabController', function(){
 
 planning.controller('getTripController', function($scope){
     $scope.saved = localStorage.getItem('trip');
-
-
-
     $scope.todos = JSON.parse($scope.saved);
     $scope.updatetripdone = function() {
         console.log($scope.done);
