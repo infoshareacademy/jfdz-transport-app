@@ -2,7 +2,7 @@
 //http://jsfiddle.net/migontech/gbW8Z/5/
 //http://jsfiddle.net/3qvyrjgt/
 
-var app = angular.module('app', ['buses', 'planning', 'ngRoute', 'mystops']);
+var app = angular.module('app', ['buses', 'planning', 'ngRoute', 'mystops', 'lines']);
 
 app.config(function ($routeProvider) {
     $routeProvider
