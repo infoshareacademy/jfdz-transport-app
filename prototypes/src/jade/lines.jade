@@ -19,4 +19,4 @@ h2 Linie
                         td(ng-repeat="y in x.busStops") {{ y }}
                     tr(ng-repeat="z in x.departure")
                         td {{z.index }}
-                        td(ng-repeat="w in z.timetable") {{ w }}
+                        td(ng-repeat="w in z.timetable" ng-watch="{{w}}") {{ w }}

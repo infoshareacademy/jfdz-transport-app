@@ -14,24 +14,34 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
         $scope.stopsx = resStops.data;
         $scope.$watch('stopsFilter', function (item) {
 
-            console.log($scope.stopsFilter);
+            $scope.czasAktualny = new Date();
+            
+            $scope.changeTime = function() {
+                //$scope.$watch('hours', function() {
+
+                    var downloadTime = angular.element(document.querySelectorAll('.timer')).data('id');
+                    console.log(downloadTime);
+                    //$scope.hours = $scope.downloadTime;
+                    var czas = new Date();
+                    var time = downloadTime;
+                    var h = time.slice(0, 2);
+                    var m = time.slice(2, 4);
+
+                    czas.setHours(h);
+                    czas.setMinutes(m);
+
+                    var hours = czas.getHours();
+                    var minutes = czas.getMinutes();
+
+                    console.log('godzina', hours + ':' + minutes);
+                //});
+            };
+
+            //$scope.changeTime();
 
             if (item != undefined) {
 
-                //czas zamiana
 
-                // var czas = new Date();
-                // var time = '0710';
-                // var h = time.slice(0, 2);
-                // var m = time.slice(2, 4);
-                //
-                // czas.setHours(h);
-                // czas.setMinutes(m);
-                //
-                // var hours = czas.getHours();
-                // var minutes = czas.getMinutes();
-                //
-                // console.log('godzina', hours + ':' + minutes);
 
                 $scope.mstops = [];
                 var x = $scope.stopsx[item].bus;

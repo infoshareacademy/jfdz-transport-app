@@ -1,6 +1,10 @@
 h2 Przystanki
 
+
+
 .row(ng-controller="StopsController")
+
+    h3 Czas: {{czasAktualny | date:'yyyy-MM-dd HH:mm'}}
 
     .row
             h3 Moje Przystanki
@@ -13,7 +17,7 @@ h2 Przystanki
                                 td {{item.line }}
                                 td {{item.destination }}
                                 td(style="width: 500px;")
-                                    span(ng-repeat="hours in item.departures") {{hours}},
+                                    span.timer(ng-repeat="hours in item.departures" data-id="{{hours}}" ng-init="changeTime()" value="{{hours}}") {{hours}},
 
     .row
             .line(ng-repeat="x in mystops") Przystanek: {{x.name}}
