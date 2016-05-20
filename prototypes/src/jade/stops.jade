@@ -16,8 +16,9 @@ h2 Przystanki
                                 td {{$index + 1}}
                                 td {{item.line }}
                                 td {{item.destination }}
-                                td(style="width: 500px;")
-                                    span.timer(ng-repeat="hours in item.departures" data-id="{{hours}}" ng-init="changeTime()" value="{{hours}}") {{hours}},
+                                td
+                                    span(ng-repeat="hours in item.departures")
+                                        span.btn.btn-default.timer(data-id="{{hours}}" ng-init="changeTime()") {{hours}}
 
     .row
             .line(ng-repeat="x in mystops") Przystanek: {{x.name}}

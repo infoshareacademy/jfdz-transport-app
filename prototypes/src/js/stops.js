@@ -17,13 +17,13 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
             $scope.czasAktualny = new Date();
             
             $scope.changeTime = function() {
-                //$scope.$watch('hours', function() {
 
-                    var downloadTime = angular.element(document.querySelectorAll('.timer')).data('id');
-                    console.log(downloadTime);
+                    $scope.downloadTime = angular.element('.timer').data('id');
+
+                    console.log($scope.downloadTime);
                     //$scope.hours = $scope.downloadTime;
                     var czas = new Date();
-                    var time = downloadTime;
+                    var time = $scope.downloadTime;
                     var h = time.slice(0, 2);
                     var m = time.slice(2, 4);
 
@@ -34,14 +34,9 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
                     var minutes = czas.getMinutes();
 
                     console.log('godzina', hours + ':' + minutes);
-                //});
             };
 
-            //$scope.changeTime();
-
             if (item != undefined) {
-
-
 
                 $scope.mstops = [];
                 var x = $scope.stopsx[item].bus;

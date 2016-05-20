@@ -12,7 +12,7 @@
               <td>{{$index + 1}}</td>
               <td>{{item.line }}</td>
               <td>{{item.destination }}</td>
-              <td style="width: 500px;"><span ng-repeat="hours in item.departures" data-id="{{hours}}" ng-init="changeTime()" value="{{hours}}" class="timer">{{hours}},</span></td>
+              <td><span ng-repeat="hours in item.departures"><span data-id="{{hours}}" ng-init="changeTime()" class="btn btn-default timer">{{hours}}</span></span></td>
             </tr>
           </tbody>
         </table>
