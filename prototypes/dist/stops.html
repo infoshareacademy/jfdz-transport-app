@@ -1,6 +1,7 @@
 
 <h2>Przystanki</h2>
 <div ng-controller="StopsController" class="row">
+  <h3>Czas: {{czasAktualny | date:'yyyy-MM-dd HH:mm'}}</h3>
   <div class="row">
     <h3>Moje Przystanki</h3>
     <zapisane>w localstorage
@@ -11,7 +12,7 @@
               <td>{{$index + 1}}</td>
               <td>{{item.line }}</td>
               <td>{{item.destination }}</td>
-              <td style="width: 500px;"><span ng-repeat="hours in item.departures">{{hours}},</span></td>
+              <td><span ng-repeat="hours in item.departures"><span data-id="{{hours}}" class="btn btn-default timer">{{hours | stringdogodziny | date: 'HH:mm'}}</span></span></td>
             </tr>
           </tbody>
         </table>
@@ -26,7 +27,7 @@
             <td>{{$index + 1}}</td>
             <td>{{item.line }}</td>
             <td>{{item.destination }}</td>
-            <td style="width: 500px;"><span ng-repeat="hours in item.departures">{{hours}},</span></td>
+            <td><span ng-repeat="hours in item.departures" class="btn btn-default timer">{{hours | stringdogodziny | date: 'HH:mm'}}</span></td>
           </tr>
         </tbody>
       </table>
@@ -63,7 +64,7 @@
           <td>{{$index + 1}}</td>
           <td>{{item.line }}</td>
           <td>{{item.destination }}</td>
-          <td style="width: 500px;"><span ng-repeat="hours in item.departures">{{hours}},</span></td>
+          <td><span ng-repeat="hours in item.departures" class="btn btn-default timer">{{hours | stringdogodziny | date: 'HH:mm'}}</span></td>
         </tr>
       </tbody>
     </table>

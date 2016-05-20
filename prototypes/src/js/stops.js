@@ -8,30 +8,42 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
     //     });
     // });
 
+
+
     //$scope.myStops = {};
     $scope.stops = function (resStops) {
 
+
+
         $scope.stopsx = resStops.data;
+
+        $scope.changeTime = function($event) {
+
+            $scope.downloadTime = angular.element($event.target).data('id');
+
+            console.log($scope.downloadTime);
+            //$scope.hours = $scope.downloadTime;
+            var czas = new Date();
+            var time = $scope.downloadTime;
+            var h = time.slice(0, 2);
+            var m = time.slice(2, 4);
+
+            czas.setHours(h);
+            czas.setMinutes(m);
+
+            var hours = czas.getHours();
+            var minutes = czas.getMinutes();
+
+            console.log('godzina', hours + ':' + minutes);
+        };
+
         $scope.$watch('stopsFilter', function (item) {
 
-            console.log($scope.stopsFilter);
+            $scope.czasAktualny = new Date();
+            
+
 
             if (item != undefined) {
-
-                //czas zamiana
-
-                 var czas = new Date();
-                 var time = '0710';
-                 var h = time.slice(0, 2);
-                 var m = time.slice(2, 4);
-
-                 czas.setHours(h);
-                 czas.setMinutes(m);
-
-                 var hours = czas.getHours();
-                 var minutes = czas.getMinutes();
-
-                 console.log('godzina', hours + ':' + minutes);
 
                 $scope.mstops = [];
                 var x = $scope.stopsx[item].bus;
@@ -54,17 +66,6 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
         angular.forEach($scope.mystops, function(item){
             //$scope.xsline =  $scope.stopsx[item];
         });
-
-        var departures = [];
-        line.departures.forEach(function (departure) {
-            departures.push({
-                hours: parseInt(departure.hour) + parseInt(hh),
-                minutes: parseInt(departure.minutes) + parseInt(mm),
-                seconds: parseInt(departure.seconds) + parseInt(ss)
-            });
-        });
-
-
         
         $scope.savedstops = JSON.parse(localStorage.getItem('mystops'));
         
@@ -82,6 +83,10 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
     busService.getStopsFor().then($scope.stops, $scope.error2);
 
 
+}).filter('stringdogodziny', function() {
+    return function(input) {
+        return input.replace(/(..)(..)/, '$1:$2');
+    };
 });
 
 // v. Agi i Kamili

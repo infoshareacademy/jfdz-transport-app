@@ -1,6 +1,10 @@
 h2 Przystanki
 
+
+
 .row(ng-controller="StopsController")
+
+    h3 Czas: {{czasAktualny | date:'yyyy-MM-dd HH:mm'}}
 
     .row
             h3 Moje Przystanki
@@ -12,8 +16,9 @@ h2 Przystanki
                                 td {{$index + 1}}
                                 td {{item.line }}
                                 td {{item.destination }}
-                                td(style="width: 500px;")
-                                    span(ng-repeat="hours in item.departures") {{hours}},
+                                td
+                                    span(ng-repeat="hours in item.departures")
+                                        span.btn.btn-default.timer(data-id="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}
 
     .row
             .line(ng-repeat="x in mystops") Przystanek: {{x.name}}
@@ -23,8 +28,8 @@ h2 Przystanki
                             td {{$index + 1}}
                             td {{item.line }}
                             td {{item.destination }}
-                            td(style="width: 500px;")
-                                span(ng-repeat="hours in item.departures") {{hours}},
+                            td
+                                span.btn.btn-default.timer(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
 
 
     .row
@@ -51,8 +56,8 @@ h2 Przystanki
                         td {{$index + 1}}
                         td {{item.line }}
                         td {{item.destination }}
-                        td(style="width: 500px;")
-                            span(ng-repeat="hours in item.departures") {{hours}},
+                        td
+                            span.btn.btn-default.timer(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
 
         button.btn.btn-default(ng-click="addstops()") Dodaj przystanek do ulubionych
 
