@@ -12,7 +12,7 @@
               <td>{{$index + 1}}</td>
               <td>{{item.line }}</td>
               <td>{{item.destination }}</td>
-              <td><span ng-repeat="hours in item.departures"><span data-id="{{hours}}" ng-init="changeTime()" class="btn btn-default timer">{{hours}}</span></span></td>
+              <td><span ng-repeat="hours in item.departures"><span data-id="{{hours}}" class="btn btn-default timer">{{hours | stringdogodziny | date: 'HH:mm'}}</span></span></td>
             </tr>
           </tbody>
         </table>
@@ -27,7 +27,7 @@
             <td>{{$index + 1}}</td>
             <td>{{item.line }}</td>
             <td>{{item.destination }}</td>
-            <td style="width: 500px;"><span ng-repeat="hours in item.departures">{{hours}},</span></td>
+            <td><span ng-repeat="hours in item.departures" class="btn btn-default timer">{{hours | stringdogodziny | date: 'HH:mm'}}</span></td>
           </tr>
         </tbody>
       </table>
@@ -64,7 +64,7 @@
           <td>{{$index + 1}}</td>
           <td>{{item.line }}</td>
           <td>{{item.destination }}</td>
-          <td style="width: 500px;"><span ng-repeat="hours in item.departures">{{hours}},</span></td>
+          <td><span ng-repeat="hours in item.departures" class="btn btn-default timer">{{hours | stringdogodziny | date: 'HH:mm'}}</span></td>
         </tr>
       </tbody>
     </table>

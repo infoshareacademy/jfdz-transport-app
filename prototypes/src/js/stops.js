@@ -8,33 +8,40 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
     //     });
     // });
 
+
+
     //$scope.myStops = {};
     $scope.stops = function (resStops) {
 
+
+
         $scope.stopsx = resStops.data;
+
+        $scope.changeTime = function($event) {
+
+            $scope.downloadTime = angular.element($event.target).data('id');
+
+            console.log($scope.downloadTime);
+            //$scope.hours = $scope.downloadTime;
+            var czas = new Date();
+            var time = $scope.downloadTime;
+            var h = time.slice(0, 2);
+            var m = time.slice(2, 4);
+
+            czas.setHours(h);
+            czas.setMinutes(m);
+
+            var hours = czas.getHours();
+            var minutes = czas.getMinutes();
+
+            console.log('godzina', hours + ':' + minutes);
+        };
+
         $scope.$watch('stopsFilter', function (item) {
 
             $scope.czasAktualny = new Date();
             
-            $scope.changeTime = function() {
 
-                    $scope.downloadTime = angular.element('.timer').data('id');
-
-                    console.log($scope.downloadTime);
-                    //$scope.hours = $scope.downloadTime;
-                    var czas = new Date();
-                    var time = $scope.downloadTime;
-                    var h = time.slice(0, 2);
-                    var m = time.slice(2, 4);
-
-                    czas.setHours(h);
-                    czas.setMinutes(m);
-
-                    var hours = czas.getHours();
-                    var minutes = czas.getMinutes();
-
-                    console.log('godzina', hours + ':' + minutes);
-            };
 
             if (item != undefined) {
 
@@ -76,6 +83,10 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
     busService.getStopsFor().then($scope.stops, $scope.error2);
 
 
+}).filter('stringdogodziny', function() {
+    return function(input) {
+        return input.replace(/(..)(..)/, '$1:$2');
+    };
 });
 
 // v. Agi i Kamili
