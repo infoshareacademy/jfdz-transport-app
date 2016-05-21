@@ -13,6 +13,9 @@ app.config(function ($routeProvider) {
         .when('/lines', {
             templateUrl: 'lines.html'
         })
+        .when('/logowanie', {
+            templateUrl: 'logowanie.html'
+        })
         .otherwise({
             templateUrl: 'stops.html'
         })
