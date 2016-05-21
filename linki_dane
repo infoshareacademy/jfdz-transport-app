@@ -4,3 +4,23 @@ http://isa-api.herokuapp.com/transport/streetMap.txt
 
 
 wyświetlanie: nr autobusu id [] - name , name.firstchild / last child
+
+angular.module("Weather").service("weatherCityService", function () {
+
+    this.setCity = function (city) {
+        localStorage.setItem('my City', city);
+
+
+        localStorage.setItem('mojObiekt', JSON.stringify(obj))
+
+    }
+    this.getCity =function (city){
+        localStorage.getItem('my City', city);
+
+        var asString = localStorage.getItem('mojObiekt');
+        var obj = JSON.parse(asString);
+
+    }
+
+}
+);
