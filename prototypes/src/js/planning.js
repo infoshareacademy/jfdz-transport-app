@@ -49,7 +49,7 @@ planning.controller('planningController', function ($scope, busService) {
                 tripname: $scope.tripname,
                 day: $scope.day,
                 stage: {
-                    stops: $scope.stops,
+                    stops: $scope.planStops[ $scope.formstops]['name'],
                     lines: $scope.lines,
                     time: $scope.time,
                     done: false
