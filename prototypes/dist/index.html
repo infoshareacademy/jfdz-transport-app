@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My website</title>
+    <link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/datepicker.css">
+  </head>
+  <body>
+    <div class="container">
+<nav class="container-fluid navbar-inverse well-lg">
+    <a href="http://test.transport.jfdz.infoshareaca.nazwa.pl/" target="_blank">
+    <img alt="Autobus" src="../../foto/logo-autobus.png" width="50" height="50"></a>
+    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{name}}</a></p>
+</nav>
+<div class="container-fluid text-center">
+    <div class="container marketing">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="img-circle thumbnail"
+                     src="../../foto/feature-hand-600.jpg"
+                     alt="Generic placeholder image" >
+
+                <div class="bus1"><h2>Wybierz przystanek</h2></div>
+                <p>Wybierz swój ulubiony przystanek</p>
+                <p><a class="btn btn-default" href="#" role="button">Wybierz swoje przystanki &raquo;</a></p>
+            </div>
+            <div class="col-sm-4">
+                <img class="img-circle thumbnail"
+                     src="../../foto/feature-chair-600.jpg"
+                     alt="Generic placeholder image" >
+
+                <div class="bus1"><h2>Linie Autobusowe</h2></div>
+                <p>Zobacz linie autobusowe w naszym mieście</p>
+
+                <p><a class="btn btn-default" href="#/lines" role="button">Linie autobusowe &raquo;</a></p>
+            </div>
+            <div class="col-sm-4">
+                <img class="img-circle thumbnail"
+                     src="../../foto/feature-people-600.jpg"
+                     alt="Generic placeholder image" >
+
+                <h2>Twoja podróż</h2>
+
+                <p>Zaplanuj swoją podróż. </p>
+
+                <p><a class="btn btn-default" href="#/planning" role="button">Twoja podróż &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    </div>
+</div>
+
+      <div ng-view class="view"></div><hr>
+<div>&copy CELOFYZ</div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/datepicker.js"></script>
+    <script src="./js/busService.js"></script>
+    <script src="./js/planning.js"></script>
+    <script src="./js/stops.js"></script>
+    <script src="./js/lines.js"></script>
+  </body>
+</html>

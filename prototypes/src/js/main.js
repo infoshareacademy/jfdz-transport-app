@@ -2,15 +2,24 @@
 //http://jsfiddle.net/migontech/gbW8Z/5/
 //http://jsfiddle.net/3qvyrjgt/
 
-var app = angular.module("app", []);
+var app = angular.module('app', ['buses', 'planning', 'ngRoute', 'mystops', 'lines']);
 
-app.controller('HomeCtrl', function ($scope) {
-    console.log("Home Controller!");
-    $scope.name = 'Agnieszka C';
+app.config(function ($routeProvider) {
+    $routeProvider
+
+        .when('/planning', {
+            templateUrl: 'planning-trip.html'
+        })
+        .when('/lines', {
+            templateUrl: 'lines.html'
+        })
+        .otherwise({
+            templateUrl: 'stops.html'
+        })
 });
 
-$(document).ready(function() {
-    $('#dp1').datepicker({
-        format: 'mm-dd-yyyy'
-    });
-});
+// $(document).ready(function() {
+//     $('#dp1').datepicker({
+//         format: 'mm-dd-yyyy'
+//     });
+// });

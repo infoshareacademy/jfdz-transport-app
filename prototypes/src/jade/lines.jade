@@ -1,0 +1,20 @@
+h2 Linie
+
+.row(ng-controller="LinesController")
+
+    .lines(ng-repeat="item in lines")
+        h3 {{ item.line }}
+        .col-lg-12(ng-repeat="x in item.destination")
+            .col-lg-12 Cel: {{ x.destinationName }}
+            .col-lg-12
+                table.table.table-bordered
+
+                    thead
+                        th lp
+                        th linie
+                    tr
+                        td #
+                        td(ng-repeat="y in x.busStops") {{ y }}
+                    tr(ng-repeat="z in x.departure")
+                        td {{z.index }}
+                        td(ng-repeat="hours in z.timetable" ng-watch="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}
