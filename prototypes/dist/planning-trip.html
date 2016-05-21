@@ -55,6 +55,7 @@
           <div class="tripname">nazwa: {{tripname}}</div>
           <hr/>
           <div class="row">
+            <div class="col-lg-12"></div>
             <table class="table table-striped">
               <thead>
                 <th>Przystanek:</th>
@@ -69,33 +70,33 @@
             </table>
           </div>
           <button ng-click="saveTrip()" class="btn btn-default">Zapisz podróż</button>
+          <div ng-show="tab.isSet(2)" class="div">
+            <h2>Twoje podróże</h2>
+            <div ng-controller="getTripController as gettrip" class="div">
+              <hr/>
+            </div>
+          </div>
+          <div class="data">data podróży: {{ day | date:'dd-MM-yyyy' }}
+            <div class="tripname">nazwa: {{tripname }}</div>
+            <table class="table table-striped">
+              <thead>
+                <th>Przystanek:</th>
+                <th>Linia:</th>
+                <th>Godzina Odjazdu</th>
+                <th>Zatwierdź</th>
+              </thead>
+              <tr ng-repeat="item in todos">
+                <td>{{item.stage.stops}}</td>
+                <td>{{item.stage.lines}} kierunek: {{item.stage.destination}}</td>
+                <td>{{item.stage.time | stringdogodziny | date: 'HH:mm'}}</td>
+                <td>
+                  <input type="checkbox" ng-model="item.stage.done" ng-change="updatetripdone()" value="item.stage.done"/>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </section>
-      <div ng-show="tab.isSet(2)" class="div">
-        <h2>Twoje podróże</h2>
-        <div ng-controller="getTripController as gettrip" class="div">
-          <hr/>
-        </div>
-      </div>
-      <div class="data">data podróży: {{ day | date:'dd-MM-yyyy' }}
-        <div class="tripname">nazwa: {{ tripname }}</div>
-        <table class="table table-striped">
-          <thead>
-            <th>Przystanek:</th>
-            <th>Linia:</th>
-            <th>Godzina Odjazdu</th>
-            <th>Zatwierdź</th>
-          </thead>
-          <tr ng-repeat="item in todos">
-            <td>{{item.stage.stops}}</td>
-            <td>{{item.stage.lines}} kierunek: {{item.stage.destination}}</td>
-            <td>{{item.stage.time | stringdogodziny | date: 'HH:mm'}}</td>
-            <td>
-              <input type="checkbox" ng-model="item.stage.done" ng-change="updatetripdone()" value="item.stage.done"/>
-            </td>
-          </tr>
-        </table>
-      </div>
     </div>
   </div>
 </div>

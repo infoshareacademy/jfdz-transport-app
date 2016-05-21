@@ -43,9 +43,9 @@
                                 .col-lg-12
                                     h4 Lista autobusów i odjazdów:
                                     .lista(ng-repeat="item in buses")
-                                       .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
-                                       .godziny odjazdy:
-                                          span(ng-repeat="hours in item.departures") {{hours}},
+                                        .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
+                                        .godziny odjazdy:
+                                            span(ng-repeat="hours in item.departures") {{hours}},
 
                             .form-group
                                 label 2. Wybierz autobus linii :
@@ -74,6 +74,7 @@
                     hr
 
                     .row
+                        .col-lg-12
                         table.table.table-striped
                             thead
                                 th Przystanek:
@@ -89,32 +90,32 @@
 
 
 
-            .div(ng-show="tab.isSet(2)")
+                    .div(ng-show="tab.isSet(2)")
 
-                        h2 Twoje podróże
-                        .div(ng-controller='getTripController as gettrip')
-                            hr
+                                h2 Twoje podróże
+                                .div(ng-controller='getTripController as gettrip')
+                                    hr
 
-                    .data data podróży: {{ day | date:'dd-MM-yyyy' }}
-                    .tripname nazwa: {{ tripname }}
+                            .data data podróży: {{ day | date:'dd-MM-yyyy' }}
+                            .tripname nazwa: {{tripname }}
 
-                    table.table.table-striped
-                        thead
-                            th Przystanek:
-                            th Linia:
-                            th Godzina Odjazdu
-                            th Zatwierdź
-                        tr(ng-repeat='item in todos')
-                            td {{item.stage.stops}}
-                            td {{item.stage.lines}} kierunek: {{item.stage.destination}}
-                            td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
-                            td
-                                input(
-                                    type='checkbox'
-                                    ng-model='item.stage.done'
-                                    ng-change='updatetripdone()'
-                                    value='item.stage.done'
-                                    )
+                            table.table.table-striped
+                                thead
+                                    th Przystanek:
+                                    th Linia:
+                                    th Godzina Odjazdu
+                                    th Zatwierdź
+                                tr(ng-repeat='item in todos')
+                                    td {{item.stage.stops}}
+                                    td {{item.stage.lines}} kierunek: {{item.stage.destination}}
+                                    td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
+                                    td
+                                        input(
+                                        type='checkbox'
+                                        ng-model='item.stage.done'
+                                        ng-change='updatetripdone()'
+                                        value='item.stage.done'
+                                        )
 
 
 
