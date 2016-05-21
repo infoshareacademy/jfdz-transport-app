@@ -59,7 +59,7 @@
                         ng-model='formhours'
                         placeholder='wybierz godzinę odjazdu'
                         )
-                            option(ng-repeat="hours in lines") {{hours}}
+                            option(ng-repeat="hours in lines") {{hours | stringdogodziny | date: 'HH:mm'}}
 
 
                     button.btn.btn-default(ng-click="addLine()") Dodaj Etap Podróży
@@ -79,8 +79,8 @@
                                 th Godzina Odjazdu
                             tr(ng-repeat='item in planningStage')
                                 td {{item.stage.stops}}
-                                td {{item.stage.lines}}
-                                td {{item.stage.time}}
+                                td {{item.stage.lines}} kierunek: {{item.stage.destination}}
+                                td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
 
 
                     button.btn.btn-default(ng-click="saveTrip()") Zapisz podróż
@@ -104,8 +104,8 @@
                             th Zatwierdź
                         tr(ng-repeat='item in todos')
                             td {{item.stage.stops}}
-                            td {{item.stage.lines}}
-                            td {{item.stage.time}}
+                            td {{item.stage.lines}} kierunek: {{item.stage.destination}}
+                            td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
                             td
                                 input(
                                     type='checkbox'

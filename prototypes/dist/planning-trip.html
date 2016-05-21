@@ -40,7 +40,7 @@
           <div class="form-group">
             <label>3. Wybierz godzinę odjazdu:</label>
             <select ng-model="formhours" placeholder="wybierz godzinę odjazdu" class="form-control">
-              <option ng-repeat="hours in lines">{{hours}}</option>
+              <option ng-repeat="hours in lines">{{hours | stringdogodziny | date: 'HH:mm'}}</option>
             </select>
           </div>
           <button ng-click="addLine()" class="btn btn-default">Dodaj Etap Podróży</button>
@@ -57,8 +57,8 @@
               </thead>
               <tr ng-repeat="item in planningStage">
                 <td>{{item.stage.stops}}</td>
-                <td>{{item.stage.lines}}</td>
-                <td>{{item.stage.time}}</td>
+                <td>{{item.stage.lines}} kierunek: {{item.stage.destination}}</td>
+                <td>{{item.stage.time | stringdogodziny | date: 'HH:mm'}}</td>
               </tr>
             </table>
           </div>
@@ -79,8 +79,8 @@
             </thead>
             <tr ng-repeat="item in todos">
               <td>{{item.stage.stops}}</td>
-              <td>{{item.stage.lines}}</td>
-              <td>{{item.stage.time}}</td>
+              <td>{{item.stage.lines}} kierunek: {{item.stage.destination}}</td>
+              <td>{{item.stage.time | stringdogodziny | date: 'HH:mm'}}</td>
               <td>
                 <input type="checkbox" ng-model="item.stage.done" ng-change="updatetripdone()" value="item.stage.done"/>
               </td>
