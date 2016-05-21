@@ -1,63 +1,65 @@
 .container
 
-    h2 Przystanki
+
 
     .row(ng-controller="StopsController")
+        .col-md-10.col-md-offset-1
+            h2 Przystanki
 
-        h3 Czas: {{czasAktualny | date:'yyyy-MM-dd HH:mm'}}
+                h3 Czas: {{czasAktualny | date:'yyyy-MM-dd HH:mm'}}
 
-        .row
-                h3 Moje Przystanki
-                zapisane w localstorage
-                    .fic(ng-repeat="x in savedstops") Przystanek: {{x.name}}
+                .div
+                       h4 Moje Przystanki
+                        zapisane w localstorage
+                            .fic(ng-repeat="x in savedstops") Przystanek: {{x.name}}
+                                table.table.table-striped.table-bordered
+                                    tbody
+                                        tr(ng-repeat="item in x.bus")
+                                            td {{$index + 1}}
+                                            td {{item.line }}
+                                            td {{item.destination }}
+                                            td
+                                                span(ng-repeat="hours in item.departures")
+                                                    span.btn.btn-default.timer(data-id="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}
+
+                .row
+                        .line(ng-repeat="x in mystops") Przystanek: {{x.name}}
+                            table.table.table-striped.table-bordered
+                                tbody
+                                    tr(ng-repeat="item in x.bus")
+                                        td {{$index + 1}}
+                                        td {{item.line }}
+                                        td {{item.destination }}
+                                        td
+                                            span.btn.btn-default.timer(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
+
+
+                .row
+                    .col-md-8.col-md-offset-2
+                        form.form-horizontal(role="form")
+                            .form-group
+                                label.col-sm-4.control-label(for="input2") Wybierz przystanek
+                                .col-sm-6
+                                    select.form-control(id="input2" ng-model="stopsFilter")
+                                        option(value="") Przystanki
+                                        option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
+
+                .row
+                        h3 Lista autobusów - {{stopsFilter}}
                         table.table.table-striped.table-bordered
+                            thead
+                                tr
+                                    th #
+                                    th Nr linii
+                                    th Kierunek
+                                    th Godziny odjazdu
                             tbody
-                                tr(ng-repeat="item in x.bus")
+                                tr(ng-repeat="item in mstops")
                                     td {{$index + 1}}
                                     td {{item.line }}
                                     td {{item.destination }}
                                     td
-                                        span(ng-repeat="hours in item.departures")
-                                            span.btn.btn-default.timer(data-id="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}
+                                        span.btn.btn-default.timer(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
 
-        .row
-                .line(ng-repeat="x in mystops") Przystanek: {{x.name}}
-                    table.table.table-striped.table-bordered
-                        tbody
-                            tr(ng-repeat="item in x.bus")
-                                td {{$index + 1}}
-                                td {{item.line }}
-                                td {{item.destination }}
-                                td
-                                    span.btn.btn-default.timer(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
-
-
-        .row
-            .col-md-8.col-md-offset-2
-                form.form-horizontal(role="form")
-                    .form-group
-                        label.col-sm-4.control-label(for="input2") Wybierz przystanek
-                        .col-sm-6
-                            select.form-control(id="input2" ng-model="stopsFilter")
-                                option(value="") Przystanki
-                                option(ng-repeat="item in stopsx" value="{{$index}}") {{item.name}}
-
-        .row
-                h3 Lista autobusów - {{stopsFilter}}
-                table.table.table-striped.table-bordered
-                    thead
-                        tr
-                            th #
-                            th Nr linii
-                            th Kierunek
-                            th Godziny odjazdu
-                    tbody
-                        tr(ng-repeat="item in mstops")
-                            td {{$index + 1}}
-                            td {{item.line }}
-                            td {{item.destination }}
-                            td
-                                span.btn.btn-default.timer(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
-
-            button.btn.btn-default(ng-click="addstops()") Dodaj przystanek do ulubionych
+                    button.btn.btn-default(ng-click="addstops()") Dodaj przystanek do ulubionych
 

@@ -42,8 +42,8 @@ form{
     background-size: cover;
     background-position: center ;
     background-attachment: fixed;
-    padding-bottom: 25px;
-    padding-top: 25px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 
 }
 
@@ -71,6 +71,9 @@ li {
     margin-top: auto;
 
 }
+/*ul {*/
+    /*background-color: #c7254e;*/
+/*}*/
 
 
 
