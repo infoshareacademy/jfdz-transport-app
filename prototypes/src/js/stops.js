@@ -51,6 +51,8 @@ mystops.controller('StopsController', function ($scope, $http, $filter, busServi
                     $scope.mstops.push(line);
                 });
 
+                $scope.namestops = $scope.stopsx[item].name;
+
                 $scope.addstops = function () {
                     $scope.mystops.push({
                         id: $scope.stopsx[item].id,
