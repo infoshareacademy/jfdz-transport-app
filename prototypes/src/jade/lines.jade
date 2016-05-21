@@ -1,19 +1,22 @@
-h2 Linie
+.container
+    .row(ng-controller="LinesController")
+        .col-md-10.col-md-offset-1
+                h2 Linie
+                .lines(ng-repeat="item in lines")
+                    h3 {{ item.line }}
+                    .col-lg-12(ng-repeat="x in item.destination")
+                        .col-lg-12 Cel: {{ x.destinationName }}
+                        .col-lg-12
+                            button.btn.btn-default(ng-click="showme=true") Pokaż rozkład
+                            button.btn.btn-default(ng-click="showme=false") Schowaj rozkład
+                            table.table.table-bordered(ng-show="showme")
 
-.row(ng-controller="LinesController")
-
-    .lines(ng-repeat="item in lines")
-        h3 {{ item.line }}
-        .col-lg-12(ng-repeat="x in item.destination")
-            .col-lg-12 Cel: {{ x.destinationName }}
-            .col-lg-12
-                button.btn.btn-default(ng-click="showme=true") Pokaż rozkład
-                button.btn.btn-default(ng-click="showme=false") Schowaj rozkład
-                table.table.table-hover(ng-show="showme")
-
-                    thead
-                        th przystanek
-                        th(ng-repeat="y in x.busStops") {{ y }}
-                    tr(ng-repeat="z in x.departure")
-                        td {{z.index+1 }}
-                        td(ng-repeat="hours in z.timetable" ng-watch="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}
+                                thead
+                                    th lp
+                                    th linie
+                                tr
+                                    td #
+                                    td(ng-repeat="y in x.busStops") {{ y }}
+                                tr(ng-repeat="z in x.departure")
+                                    td {{z.index }}
+                                    td(ng-repeat="hours in z.timetable" ng-watch="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}
