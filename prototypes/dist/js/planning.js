@@ -42,6 +42,7 @@ planning.controller('planningController', function ($scope, busService) {
             $scope.tripname = $scope.formname;
             $scope.stops = $scope.formstops;
             $scope.lines = $scope.formlines;
+            $scope.destination = $scope.formlines;
             $scope.time = $scope.formhours;
             //$scope.done = $scope.done;
 
@@ -50,8 +51,8 @@ planning.controller('planningController', function ($scope, busService) {
                 day: $scope.day,
                 stage: {
                     stops: $scope.planStops[ $scope.formstops]['name'],
-                    lines: $scope.planStops[ $scope.formstops]['name'],
-                    lines: $scope.lines,
+                    lines: $scope.planStops[ $scope.formstops].bus[$scope.lines].line,
+                    destination:$scope.planStops[ $scope.formstops].bus[$scope.lines].destination,
                     time: $scope.time,
                     done: false
                 }
@@ -77,6 +78,10 @@ planning.controller('planningController', function ($scope, busService) {
     busService.getLinesFor().then($scope.lines, $scope.error1);
     busService.getStopsFor().then($scope.stops, $scope.error2);
 
+}).filter('stringdogodziny', function() {
+    return function(input) {
+        return input.replace(/(..)(..)/, '$1:$2');
+    };
 });
 
 planning.controller('TabController', function(){
@@ -106,6 +111,10 @@ planning.controller('getTripController', function($scope){
         //     }
         // });
         // localStorage.setItem('trip', JSON.stringify($scope.planningStage));
+    };
+}).filter('stringdogodziny', function() {
+    return function(input) {
+        return input.replace(/(..)(..)/, '$1:$2');
     };
 });
 
