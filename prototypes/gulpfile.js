@@ -18,7 +18,7 @@ gulp.task('templates', function() {
     .pipe(jade({
       pretty: true,
       locals: {
-        title: 'My website'
+        title: 'Planowanie podróży'
       }
     }))
     .pipe(gulp.dest('./dist/'));
