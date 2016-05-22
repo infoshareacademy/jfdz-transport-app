@@ -10,7 +10,7 @@
 
                 .row(ng-controller="planningController")
 
-                .div(ng-show="tab.isSet(1)")
+                    .div(ng-show="tab.isSet(1)")
 
                         h2 Zaplanuj podróż
                         form
@@ -90,10 +90,11 @@
 
 
 
-                .div(ng-show="tab.isSet(2)")
+                    .div(ng-show="tab.isSet(2)")
 
-                            h2 Twoje podróże
-                            .div(ng-controller='getTripController as gettrip')
+                        h2 Twoje podróże
+                        .div(ng-controller='getTripController as gettrip')
+
                             hr
 
                             .data data podróży: {{ day | date:'dd-MM-yyyy' }}
