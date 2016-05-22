@@ -10,7 +10,7 @@
 
                 .row(ng-controller="planningController")
 
-                    .div(ng-show="tab.isSet(1)")
+                .div(ng-show="tab.isSet(1)")
 
                         h2 Zaplanuj podróż
                         form
@@ -43,9 +43,9 @@
                                 .col-lg-12
                                     h4 Lista autobusów i odjazdów:
                                     .lista(ng-repeat="item in buses")
-                                       .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
-                                       .godziny odjazdy:
-                                          span(ng-repeat="hours in item.departures") {{hours}},
+                                        .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
+                                        .godziny odjazdy:
+                                            span(ng-repeat="hours in item.departures") {{hours}},
 
                             .form-group
                                 label 2. Wybierz autobus linii :
@@ -64,39 +64,40 @@
                                     option(ng-repeat="hours in lines") {{hours | stringdogodziny | date: 'HH:mm'}}
 
 
-                            button.btn.btn-default(ng-click="addLine()") Dodaj Etap Podróży
+                                button.btn.btn-default(ng-click="addLine()") Dodaj Etap Podróży
 
-                        hr
+                            hr
 
-                        .data data podróży: {{day | date:'dd-MM-yyyy' }}
-                        .tripname nazwa: {{tripname}}
+                            .data data podróży: {{day | date:'dd-MM-yyyy' }}
+                            .tripname nazwa: {{tripname}}
 
-                        hr
+                            hr
 
-                        .row
-                            table.table.table-striped
-                                thead
-                                    th Przystanek:
-                                    th Linia:
-                                    th Godzina Odjazdu
-                                tr(ng-repeat='item in planningStage')
-                                    td {{item.stage.stops}}
-                                    td {{item.stage.lines}} kierunek: {{item.stage.destination}}
-                                    td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
-
-
-                        button.btn.btn-default(ng-click="saveTrip()") Zapisz podróż
+                            .row
+                                .col-lg-12
+                                table.table.table-striped
+                                    thead
+                                        th Przystanek:
+                                        th Linia:
+                                        th Godzina Odjazdu
+                                    tr(ng-repeat='item in planningStage')
+                                        td {{item.stage.stops}}
+                                        td {{item.stage.lines}} kierunek: {{item.stage.destination}}
+                                        td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
 
 
+                            button.btn.btn-default(ng-click="saveTrip()") Zapisz podróż
 
-                    .div(ng-show="tab.isSet(2)")
 
-                        h2 Twoje podróże
-                        .div(ng-controller='getTripController as gettrip')
+
+                .div(ng-show="tab.isSet(2)")
+
+                            h2 Twoje podróże
+                            .div(ng-controller='getTripController as gettrip')
                             hr
 
                             .data data podróży: {{ day | date:'dd-MM-yyyy' }}
-                            .tripname nazwa: {{ tripname }}
+                            .tripname nazwa: {{tripname }}
 
                             table.table.table-striped
                                 thead
@@ -110,11 +111,11 @@
                                     td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
                                     td
                                         input(
-                                            type='checkbox'
-                                            ng-model='item.stage.done'
-                                            ng-change='updatetripdone()'
-                                            value='item.stage.done'
-                                            )
+                                        type='checkbox'
+                                        ng-model='item.stage.done'
+                                        ng-change='updatetripdone()'
+                                        value='item.stage.done'
+                                        )
 
 
 
