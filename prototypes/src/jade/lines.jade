@@ -9,14 +9,11 @@
                         .col-lg-12
                             button.btn.btn-default(ng-click="showme=true") Pokaż rozkład
                             button.btn.btn-default(ng-click="showme=false") Schowaj rozkład
-                            table.table.table-bordered(ng-show="showme")
+                            table.table.table-hover(ng-show="showme")
 
                                 thead
-                                    th lp
-                                    th linie
-                                tr
-                                    td #
-                                    td(ng-repeat="y in x.busStops") {{ y }}
+                                    th przystanek
+                                    th(ng-repeat="y in x.busStops") {{ y }}
                                 tr(ng-repeat="z in x.departure")
-                                    td {{z.index }}
+                                    td {{z.index+1 }}
                                     td(ng-repeat="hours in z.timetable" ng-watch="{{hours}}") {{hours | stringdogodziny | date: 'HH:mm'}}

@@ -10,9 +10,8 @@
                     .col-md-12
                         h4 Moje Przystanki
 
-
-                            .fic(ng-repeat="x in savedstops") Przystanek: {{x.name}}
-                                table.table.table-striped.table-bordered
+                        .fic(ng-repeat="x in savedstops") Przystanek: {{x.name}}
+                                table.table.table-hover
                                     tbody
                                         tr(ng-repeat="item in x.bus")
                                             td {{$index + 1}}
