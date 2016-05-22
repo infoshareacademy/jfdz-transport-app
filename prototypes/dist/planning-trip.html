@@ -23,6 +23,7 @@
               <div class="form-group">
                 <label>1. Wybierz przystanek:</label>
                 <select name="busstop" ng-model="formstops" class="form-control">
+                  <option value="">Wybierz przystanek</option>
                   <option ng-repeat="stop in planStops" value="{{$index}}">{{ stop.name }}</option>
                 </select>
               </div>
@@ -40,12 +41,14 @@
               <div class="form-group">
                 <label>2. Wybierz autobus linii :</label>
                 <select name="buslines" ng-model="formlines" class="form-control">
+                  <option value="">Wybierz linię</option>
                   <option ng-repeat="item in buses" value="{{$index}}">{{item.line}} kierunek: {{item.destination}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>3. Wybierz godzinę odjazdu:</label>
                 <select ng-model="formhours" placeholder="wybierz godzinę odjazdu" class="form-control">
+                  <option value="">Wybierz godzinę</option>
                   <option ng-repeat="hours in lines">{{hours | stringdogodziny | date: 'HH:mm'}}</option>
                 </select>
                 <button ng-click="addLine()" class="btn btn-default">Dodaj Etap Podróży</button>
