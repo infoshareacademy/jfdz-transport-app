@@ -1,6 +1,8 @@
 @import "vars.sass";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
-
+body{
+  background-color: rgba(161, 161, 161, 0.15);
+}
 .img-circle {
   height: 250px;
   width: 250px;

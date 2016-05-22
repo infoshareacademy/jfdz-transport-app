@@ -80,7 +80,7 @@ planning.controller('planningController', function ($scope, busService) {
 
 }).filter('stringdogodziny', function() {
     return function(input) {
-        return input.replace(/(..)(..)/, '$1:$2');
+        return input.replace(/(..)(..)/, '$1 $2');
     };
 });
 
@@ -114,7 +114,7 @@ planning.controller('getTripController', function($scope){
     };
 }).filter('stringdogodziny', function() {
     return function(input) {
-        return input.replace(/(..)(..)/, '$1:$2');
+        return input.replace(/(..)(..)/, '$1 $2');
     };
 });
 

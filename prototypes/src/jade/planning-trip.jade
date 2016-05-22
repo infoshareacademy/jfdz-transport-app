@@ -45,7 +45,7 @@
                                     .lista(ng-repeat="item in buses")
                                         .linie(ng-filter="formlines") linie: {{item.line}} kierunek: {{item.destination}}
                                         .godziny odjazdy:
-                                            span(ng-repeat="hours in item.departures") {{hours}},
+                                            button.btn.btn-sm(ng-repeat="hours in item.departures") {{hours | stringdogodziny | date: 'HH:mm'}}
 
                             .form-group
                                 label 2. Wybierz autobus linii :

@@ -31,7 +31,9 @@
                   <h4>Lista autobusów i odjazdów:</h4>
                   <div ng-repeat="item in buses" class="lista">
                     <div ng-filter="formlines" class="linie">linie: {{item.line}} kierunek: {{item.destination}}</div>
-                    <div class="godziny">odjazdy:<span ng-repeat="hours in item.departures">{{hours}},</span></div>
+                    <div class="godziny">odjazdy:
+                      <button ng-repeat="hours in item.departures" class="btn btn-sm">{{hours | stringdogodziny | date: 'HH:mm'}}</button>
+                    </div>
                   </div>
                 </div>
               </div>
