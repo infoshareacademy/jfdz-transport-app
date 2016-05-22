@@ -72,11 +72,9 @@
         </div>
         <div ng-show="tab.isSet(2)" class="div">
           <h2>Twoje podróże</h2>
-          <div ng-controller="getTripController as gettrip" class="div">
-            <hr/>
-          </div>
-        </div>
-        <div class="data">data podróży: {{ day | date:'dd-MM-yyyy' }}
+          <div ng-controller="getTripController as gettrip" class="div"></div>
+          <hr/>
+          <div class="data">data podróży: {{ day | date:'dd-MM-yyyy' }}</div>
           <div class="tripname">nazwa: {{tripname }}</div>
           <table class="table table-striped">
             <thead>

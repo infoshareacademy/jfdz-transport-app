@@ -94,28 +94,28 @@
 
                             h2 Twoje podróże
                             .div(ng-controller='getTripController as gettrip')
-                                hr
+                            hr
 
-                        .data data podróży: {{ day | date:'dd-MM-yyyy' }}
-                        .tripname nazwa: {{tripname }}
+                            .data data podróży: {{ day | date:'dd-MM-yyyy' }}
+                            .tripname nazwa: {{tripname }}
 
-                        table.table.table-striped
-                            thead
-                                th Przystanek:
-                                th Linia:
-                                th Godzina Odjazdu
-                                th Zatwierdź
-                            tr(ng-repeat='item in todos')
-                                td {{item.stage.stops}}
-                                td {{item.stage.lines}} kierunek: {{item.stage.destination}}
-                                td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
-                                td
-                                    input(
-                                    type='checkbox'
-                                    ng-model='item.stage.done'
-                                    ng-change='updatetripdone()'
-                                    value='item.stage.done'
-                                    )
+                            table.table.table-striped
+                                thead
+                                    th Przystanek:
+                                    th Linia:
+                                    th Godzina Odjazdu
+                                    th Zatwierdź
+                                tr(ng-repeat='item in todos')
+                                    td {{item.stage.stops}}
+                                    td {{item.stage.lines}} kierunek: {{item.stage.destination}}
+                                    td {{item.stage.time | stringdogodziny | date: 'HH:mm'}}
+                                    td
+                                        input(
+                                        type='checkbox'
+                                        ng-model='item.stage.done'
+                                        ng-change='updatetripdone()'
+                                        value='item.stage.done'
+                                        )
 
 
 
